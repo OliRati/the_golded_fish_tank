@@ -88,22 +88,23 @@ a:hover {
 
 #mainpicture div {
     position: absolute;
-    left: 1em;
-    bottom: 3em;
+    left: 0.5em;
+    bottom: 0.5em;
     width: 70vw;
 }
 
 #mainpicture h1 {
     color: white;
     font-family: 'Aileron';
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.2em;
 }
 
 #mainpicture p {
     font-family: 'Aileron';
-    font-size: 1.4em;
+    font-size: 0.8em;
     font-weight: 400;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -147,13 +148,6 @@ a:hover {
 
 .golded {
     color: #f3c94b;
-}
-
-h1 {
-    font-family: 'Aileron';
-    color: #86eae9;
-    font-size: 1.2rem;
-    padding: 1rem 0;
 }
 
 p {
@@ -365,6 +359,7 @@ form textarea {
     background-color: #3f3f3f;
     color: white;
     border: none;
+    resize: none;
 }
 
 .realisations {
@@ -400,6 +395,20 @@ form textarea {
     
     .dualcolons>div {
         width: 48%;
+    }
+
+    #mainpicture div {
+        left: 1em;
+        bottom: 1em;
+    }
+    
+    #mainpicture h1 {
+        font-size: 1.5em;
+        margin-bottom: 0.2em;
+    }
+    
+    #mainpicture p {
+        font-size: 1.2em;
     }    
 }
 
@@ -413,4 +422,18 @@ form textarea {
         width: 1024px;
         margin: 0.5em auto;
     }
+
+    #mainpicture div {
+        left: 2em;
+        bottom: 2em;
+    }
+    
+    #mainpicture h1 {
+        font-size: 2em;
+        margin-bottom: 0.2em;
+    }
+    
+    #mainpicture p {
+        font-size: 1.6em;
+    }    
 }
