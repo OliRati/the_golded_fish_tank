@@ -1,0 +1,416 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    background-color: #191919;
+    color: antiquewhite;
+}
+
+header {
+    background-color: black;
+    width: 100vw;
+}
+
+.innerheader {
+    display: flex;
+    margin: 0 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+footer {
+    background-color: black;
+    width: 100vw;
+}
+
+footer p {
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+.innerfooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0.5em;
+}
+
+.footerlogo {
+    width: 25vw;
+    height: auto;
+}
+
+a {
+    font-family: "Aileron";
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    margin: 2em;
+}
+
+a:hover {
+    color: #f3c94b;
+    font-weight: 700;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu a {
+    margin: 0;
+    margin-right: 1em;
+}
+
+.menu a:hover {
+    color: #f3c94b;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+}
+
+#mainpicture {
+    position: relative;
+    width: 100vw;
+    height: 50vw;
+    overflow: hidden;
+}
+
+#mainpicture div {
+    position: absolute;
+    left: 1em;
+    bottom: 3em;
+    width: 70vw;
+}
+
+#mainpicture h1 {
+    color: white;
+    font-family: 'Aileron';
+    font-size: 2em;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#mainpicture p {
+    font-family: 'Aileron';
+    font-size: 1.4em;
+    font-weight: 400;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#mainlogo {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    width: 25vw;
+    height: auto;
+}
+
+@font-face {
+    font-family: 'DynaPuff';
+    src: url("../fonts/DynaPuff-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Aileron';
+    src: url("../fonts/Aileron-Regular.otf");
+}
+
+@font-face {
+    font-family: 'BreeSerif';
+    src: url("../fonts/BreeSerif_Reg.otf");
+}
+
+.background {
+    background-color: #496cbe;
+    margin: 1rem;
+    border-radius: 10px;
+    width: calc(100vw - 2rem);
+    height: calc(100vh -2rem);
+}
+
+.title {
+    font-family: 'DynaPuff';
+    color: white;
+    font-size: 1rem;
+}
+
+.golded {
+    color: #f3c94b;
+}
+
+h1 {
+    font-family: 'Aileron';
+    color: #86eae9;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+}
+
+p {
+    font-family: 'BreeSerif';
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+.holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tuile {
+    background-color: #2f2f2f;
+    border-radius: 15px;
+    width: 250px;
+    height: 400px;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0.5em 0;
+}
+
+.color1 {
+    background-color: #3edad8;
+}
+
+.color2 {
+    background-color: #2C92D5;
+}
+
+.color3 {
+    background-color: #496CBE;
+}
+
+.colordarkgray {
+    background-color: #191919;
+}
+
+.colorgray {
+    background-color: #2f2f2f;
+}
+
+.colorlightgray {
+    background-color: #3f3f3f;
+}
+
+.colorgolded {
+    background-color: #f3c94b;
+}
+
+.boxedtitle {
+    border-radius: 15px;
+    padding: 0.4em 0;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.groupbutton {
+    display: flex;
+    margin: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.boxedbutton {
+    border-radius: 15px;
+    padding: 0.25em;
+    margin: 0 auto;
+    font-size: 1em;
+    text-align: center;
+    width: fit-content;
+}
+
+.roundedbox {
+    border-radius: 15px;
+    font-size: 1.5em;
+}
+
+.innerbox {
+    margin: 0.5em;
+    padding-top: 0.5em;
+}
+
+.center {
+    text-align: center;
+    font-weight: 600;
+    padding: 0;
+}
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about div {
+    text-align: justify;
+    width: 100%;
+}
+
+.dualcolons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.dualcolons>div {
+    width: 100%;
+}
+
+.element {
+    width: 95vw;
+    margin: 0.5em auto;
+}
+
+.miniatures {
+    display: flew;
+    flex-wrap: wrap;
+}
+
+.miniatures img {
+    height: 100px;
+    width: auto;
+    margin: 10px;
+}
+
+.miniatures img:hover {
+    transform: scale(1.4);
+}
+
+.logofacebook,
+.logoyoutube {
+    height: 40px;
+    width: auto;
+}
+
+.article {
+    border-radius: 15px;
+    font-size: 1.5em;
+    padding: 0.5em;
+    margin: 0.5em 0;
+}
+
+.horodatage {
+    font-family: 'BreeSerif';
+    font-size: .5em;
+    font-weight: 700;
+    color: #f3c94b;
+}
+
+.question {
+    padding-left: 1em;
+    font-family: 'BreeSerif';
+    font-size: .5em;
+    font-weight: 300;
+}
+
+.response {
+    padding-left: 2em;
+    font-family: 'BreeSerif';
+    font-size: .5em;
+    font-weight: 300;
+    color: #9f9f9f;
+}
+
+.image {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 0.5em;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+form {
+    width: 100%;
+    font-size: 1em;
+}
+
+form input {
+    width: 100%;
+    font-family: 'Aileron';
+    font-size: 1em;
+    background-color: #3f3f3f;
+    color: white;
+    border: none;
+}
+
+form input[type='submit'] {
+    color: white;
+    border: none;
+    margin: 0.5em 10%;
+    width: 80%;
+}
+
+form textarea {
+    font-family: 'Aileron';
+    font-size: 1em;
+    width: 100%;
+    background-color: #3f3f3f;
+    color: white;
+    border: none;
+}
+
+.realisations {
+    font-family: 'Aileron';
+    font-size: 2em;
+}
+
+
+/* For tablets */
+@media screen and (min-width:768px) {
+
+    .title {
+        font-size: 1.4rem;
+    }
+    
+    .element {
+        width: 90vw;
+        margin: 0.5em auto;
+    }
+
+    .about {
+        flex-wrap: nowrap;
+    }
+
+    .about div {
+        text-align: justify;
+        width: 48%;
+    }
+
+    .dualcolons {
+        flex-wrap: nowrap;
+    }
+    
+    .dualcolons>div {
+        width: 48%;
+    }    
+}
+
+/* For desktops */
+@media screen and (min-width:1280px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .element {
+        width: 1024px;
+        margin: 0.5em auto;
+    }
+}
