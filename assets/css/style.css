@@ -49,11 +49,10 @@ footer p {
 
 a {
     font-family: "Aileron";
-    font-size: 1em;
+    font-size: 0.7em;
     font-weight: 500;
     text-decoration: none;
     color: white;
-    margin: 2em;
 }
 
 a:hover {
@@ -166,7 +165,7 @@ p {
 .tuile {
     background-color: #2f2f2f;
     border-radius: 15px;
-    width: 250px;
+    width: 80%;
     height: 400px;
     padding: 0.5em;
     display: flex;
@@ -219,7 +218,7 @@ p {
 .boxedbutton {
     border-radius: 15px;
     padding: 0.25em;
-    margin: 0 auto;
+    margin: 0.5em auto;
     font-size: 1em;
     text-align: center;
     width: fit-content;
@@ -374,7 +373,7 @@ form textarea {
     .title {
         font-size: 1.4rem;
     }
-    
+
     .element {
         width: 90vw;
         margin: 0.5em auto;
@@ -392,7 +391,7 @@ form textarea {
     .dualcolons {
         flex-wrap: nowrap;
     }
-    
+
     .dualcolons>div {
         width: 48%;
     }
@@ -401,15 +400,23 @@ form textarea {
         left: 1em;
         bottom: 1em;
     }
-    
+
     #mainpicture h1 {
         font-size: 1.5em;
         margin-bottom: 0.2em;
     }
-    
+
     #mainpicture p {
         font-size: 1.2em;
-    }    
+    }
+
+    a {
+        font-size: 0.8em;
+    }
+
+    .tuile {
+        width: 250px;
+    }
 }
 
 /* For desktops */
@@ -419,7 +426,7 @@ form textarea {
     }
 
     .element {
-        width: 1024px;
+        width: 1280px;
         margin: 0.5em auto;
     }
 
@@ -427,13 +434,21 @@ form textarea {
         left: 2em;
         bottom: 2em;
     }
-    
+
     #mainpicture h1 {
         font-size: 2em;
         margin-bottom: 0.2em;
     }
-    
+
     #mainpicture p {
         font-size: 1.6em;
-    }    
+    }
+
+    a {
+        font-size: 1.0em;
+    }
+
+    .tuile {
+        width: 300px;
+    }
 }
