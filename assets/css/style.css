@@ -37,13 +37,14 @@ footer p {
 
 .innerfooter {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin: 0 0.5em;
 }
 
 .footerlogo {
     width: 25vw;
+    max-width: 150px;
     height: auto;
 }
 
@@ -122,6 +123,7 @@ a:hover {
     right: 1em;
     bottom: 1em;
     width: 25vw;
+    max-width: 150px;
     height: auto;
 }
 
@@ -294,7 +296,7 @@ p {
 
 .logofacebook,
 .logoyoutube {
-    height: 40px;
+    height: 30px;
     width: auto;
 }
 
@@ -341,7 +343,8 @@ p {
 
 form {
     width: 100%;
-    font-size: 1em;
+    font-size:0.8em;
+    font-family: 'Aileron';
 }
 
 form input {
@@ -370,14 +373,43 @@ form textarea {
     resize: none;
 }
 
+.checkframe {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+form input[type='checkbox'] {
+    background-color: #3f3f3f;
+    width: auto;
+    margin-right: 10px;
+}
+
+form label {
+    color: white;
+    font-family: 'Aileron';
+    font-size: 0.8em;
+}
+
 .realisations {
     font-family: 'Aileron';
     font-size: 2em;
 }
 
+/* For large phones */
+@media screen and (min-width:560px) {
+    .tuile {
+        width: 250px;
+    }
+}
 
 /* For tablets */
 @media screen and (min-width:768px) {
+
+    .logofacebook,
+    .logoyoutube {
+        height: 40px;
+    }
 
     .title {
         font-size: 1.4rem;
@@ -458,6 +490,6 @@ form textarea {
     }
 
     .tuile {
-        width: 300px;
+        width: 350px;
     }
 }
