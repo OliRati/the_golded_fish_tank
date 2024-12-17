@@ -85,7 +85,6 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 
 #mainpicture {
@@ -95,14 +94,17 @@ a:hover {
     overflow: hidden;
 }
 
-#mainpicture div {
+.maintitle {
     position: absolute;
-    left: 0.5em;
-    bottom: 0.5em;
-    width: 70vw;
+    bottom: 0.2em;
+    left: 1em;
+    right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#mainpicture h1 {
+.bigtitle {
     color: white;
     font-family: 'Aileron';
     font-size: 1em;
@@ -111,18 +113,17 @@ a:hover {
     margin-bottom: 0.2em;
 }
 
-#mainpicture p {
+.smalltitle {
+    color:antiquewhite;
     font-family: 'Aileron';
     font-size: 0.8em;
     font-weight: 400;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0;
 }
 
 #mainlogo {
-    position: absolute;
-    right: 1em;
-    bottom: 1em;
-    width: 25vw;
+    width: 30%;
     max-width: 150px;
     height: auto;
 }
@@ -166,23 +167,44 @@ p {
     padding: 0.5rem 0;
 }
 
+p::first-letter {
+    font-weight: 800;
+    font-size: larger;
+}
+
 .holder {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 100%;
+    width: 250px;
+    margin: 0 auto;
 }
 
 .tuile {
     background-color: #2f2f2f;
     border-radius: 15px;
-    width: 80%;
+    width: 250px;
     height: 400px;
     padding: 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0.5em 0;
+}
+
+.tuile a {
+    font-family: 'Aileron';
+    font-size: 1em;
+    padding: 0 2em;
+}
+
+.tuile hr {
+    border: 1px solid #f3c94b;
+}
+
+.tuile:hover {
+    box-shadow: 0 0 10px #3edad8;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .color1 {
@@ -235,6 +257,11 @@ p {
     width: fit-content;
 }
 
+.boxedbutton:hover {
+    color: #f3c94b;
+    cursor: pointer;
+}
+
 .roundedbox {
     border-radius: 15px;
     font-size: 1.5em;
@@ -280,7 +307,7 @@ p {
 }
 
 .miniatures {
-    display: flew;
+    display: flex;
     flex-wrap: wrap;
 }
 
@@ -292,6 +319,8 @@ p {
 
 .miniatures img:hover {
     transform: scale(1.4);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .logofacebook,
@@ -343,7 +372,7 @@ p {
 
 form {
     width: 100%;
-    font-size:0.8em;
+    font-size: 0.8em;
     font-family: 'Aileron';
 }
 
@@ -398,8 +427,8 @@ form label {
 
 /* For large phones */
 @media screen and (min-width:560px) {
-    .tuile {
-        width: 250px;
+    .holder {
+        width: 100%;
     }
 }
 
@@ -420,6 +449,10 @@ form label {
         margin: 0.5em auto;
     }
 
+    .maintitle {
+        bottom: 7em;
+    }
+
     .about {
         flex-wrap: nowrap;
     }
@@ -437,26 +470,17 @@ form label {
         width: 48%;
     }
 
-    #mainpicture div {
-        left: 1em;
-        bottom: 1em;
-    }
-
-    #mainpicture h1 {
+    .bigtitle {
         font-size: 1.5em;
-        margin-bottom: 0.2em;
+        margin-bottom: 0.5em;
     }
 
-    #mainpicture p {
+    .smalltitle {
         font-size: 1.2em;
     }
 
     a {
         font-size: 0.8em;
-    }
-
-    .tuile {
-        width: 250px;
     }
 }
 
@@ -467,28 +491,36 @@ form label {
     }
 
     .element {
-        width: 1280px;
+        width: 1200px;
         margin: 0.5em auto;
     }
 
-    #mainpicture div {
-        left: 2em;
-        bottom: 2em;
+    .maintitle {
+        bottom: 15em;
     }
 
-    #mainpicture h1 {
+    .bigtitle {
         font-size: 2em;
-        margin-bottom: 0.2em;
+        margin-bottom: 0.5em;
     }
 
-    #mainpicture p {
+    .smalltitle {
         font-size: 1.6em;
+    }
+
+    #mainlogo {
+        right: 5em;
+        bottom: 10em;
     }
 
     a {
         font-size: 1.0em;
     }
 
+    p {
+        font-size: 1.2rem;
+    }
+    
     .tuile {
         width: 350px;
     }

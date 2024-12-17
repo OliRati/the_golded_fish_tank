@@ -23,77 +23,87 @@
                 <a href="#contactus">Contact</a>
             </div>
             <div class="socialheader">
-                <img class="logofacebook" src="./assets/img/facebook_logo.png" alt="Facebook logo">
-                <img class="logoyoutube" src="./assets/img/youtube_logo.png" alt="Youtube logo">
+                <a href="https://www.facebook.fr">
+                    <img class="logofacebook" src="./assets/img/facebook_logo.png" alt="Facebook logo">
+                </a>
+                <a href="https://www.youtube.fr">
+                    <img class="logoyoutube" src="./assets/img/youtube_logo.png" alt="Youtube logo">
+                </a>
             </div>
         </div>
     </header>
 
     <div id="mainpicture" id="mainpage">
         <img src="./assets/img/pexels-saturnus99-9004341.jpg" alt="">
-        <div>
-            <h1>Votre Expert en Conseil, Création, Entretien et Rénovation d'Aquariums</h1>
-            <p>Nous allons étudié vos besoins afin de vous proposer une offre complète et adaptée</p>
+        <div class="element maintitle">
+            <div>
+                <h1 class="bigtitle">Votre Expert en Conseil, Création, Entretien et Rénovation d'Aquariums</h1>
+                <div class="smalltitle">Nous allons étudié vos besoins afin de vous proposer une offre complète et
+                    adaptée</div>
+            </div>
+            <img id="mainlogo" src="./assets/img/logo_thegoldedfishtank.png" alt="">
         </div>
-        <img id="mainlogo" src="./assets/img/logo_thegoldedfishtank.png" alt="">
     </div>
 
-    <div class="element holder" id="ourservices">
-        <div class="tuile">
-            <h2 class="boxedtitle color1">
-                Aquarium sur mesure
-            </h2>
-            <div>
-                <p class="center">Votre besoin</p>
-                <hr>
-                <p>Un aquarium adapté à votre environnement, vos besoins ou vos envies.</p>
+    <div class="element" id="ourservices">
+        <div class="holder">
+            <div class="tuile">
+                <h2 class="boxedtitle color1">
+                    Aquarium sur mesure
+                </h2>
+                <div>
+                    <p class="center">Votre besoin</p>
+                    <hr>
+                    <p>Un aquarium adapté à votre environnement, vos besoins ou vos envies.</p>
+                </div>
+                <div>
+                    <p class="center">Notre réponse</p>
+                    <hr>
+                    <p>Nous réalisons tout type d'aquarium (eau douce ou eau de mer) sur mesure.</p>
+                </div>
+                <div class="boxedbutton color1">
+                    <a href="#surmesure">En savoir +</a>
+                </div>
             </div>
-            <div>
-                <p class="center">Notre réponse</p>
-                <hr>
-                <p>Nous réalisons tout type d'aquarium (eau douce ou eau de mer) sur mesure.</p>
-            </div>
-            <div class="boxedbutton color1">
-                <a href="#surmesure">En savoir +</a>
-            </div>
-        </div>
 
-        <div class="tuile">
-            <h2 class="boxedtitle color2">
-                Entretien d'aquarium
-            </h2>
-            <div>
-                <p class="center">Votre besoin</p>
-                <hr>
-                <p>Profitez des bienfaits d'un aquarium en toute sérénité, sans se soucier de son entretien</p>
+            <div class="tuile">
+                <h2 class="boxedtitle color2">
+                    Entretien d'aquarium
+                </h2>
+                <div>
+                    <p class="center">Votre besoin</p>
+                    <hr>
+                    <p>Profitez des bienfaits d'un aquarium en toute sérénité, sans se soucier de son entretien</p>
+                </div>
+                <div>
+                    <p class="center">Notre réponse</p>
+                    <hr>
+                    <p>Nous proposons des contrats d'entretien adaptés à votre aquarium.</p>
+                </div>
+                <div class="boxedbutton color2">
+                    <a href="#entretien">En savoir +</a>
+                </div>
             </div>
-            <div>
-                <p class="center">Notre réponse</p>
-                <hr>
-                <p>Nous proposons des contrats d'entretien adaptés à votre aquarium.</p>
-            </div>
-            <div class="boxedbutton color2">
-                <a href="#entretien">En savoir +</a>
-            </div>
-        </div>
 
-        <div class="tuile">
-            <h2 class="boxedtitle color3">
-                Services à la carte
-            </h2>
-            <div>
-                <p class="center">Votre besoin</p>
-                <hr>
-                <p>Un déménagement, un redémarrage, un gardiennage pendant vos vacances ou tout autre besoin spécifique.
-                </p>
-            </div>
-            <div>
-                <p class="center">Notre réponse</p>
-                <hr>
-                <p>Nous étudions toutes vos demandes d'assistances ponctuelles.</p>
-            </div>
-            <div class="boxedbutton color3">
-                <a href="#alacarte">En savoir +</a>
+            <div class="tuile">
+                <h2 class="boxedtitle color3">
+                    Services à la carte
+                </h2>
+                <div>
+                    <p class="center">Votre besoin</p>
+                    <hr>
+                    <p>Un déménagement, un redémarrage, un gardiennage pendant vos vacances ou tout autre besoin
+                        spécifique.
+                    </p>
+                </div>
+                <div>
+                    <p class="center">Notre réponse</p>
+                    <hr>
+                    <p>Nous étudions toutes vos demandes d'assistances ponctuelles.</p>
+                </div>
+                <div class="boxedbutton color3">
+                    <a href="#alacarte">En savoir +</a>
+                </div>
             </div>
         </div>
     </div>
@@ -134,10 +144,10 @@
                         Nous vous accompagnons dans votre projet aquatique, de A à Z.
                     </p>
                     <p>
-                        Pour commencer, nous définissons ensemble votre projet selon les critères suivants :
-                        - La taille, la contenance et la hauteur d'eau selon le biotope que vous souhaitez. - Le choix
-                        du
-                        support, le type de filtration et bien sur l'emplacement de l'aquarium dans votre pièce
+                        Pour commencer, nous définissons ensemble votre projet selon les critères suivants :<br>
+                        - La taille, la contenance et la hauteur d'eau selon le biotope que vous souhaitez.<br>
+                        - Le choix du support, le type de filtration et bien sur l'emplacement de l'aquarium dans votre
+                        pièce
                     </p>
                     <p>
                         Nous nous occupons ensuite de la fabrication, de la livraison et, bien sûr, de l’installation de
@@ -354,7 +364,7 @@
     <div class="element roundedbox colorgray">
         <div class="innerbox">
             <div class="boxedtitle color3">
-                Vos dernieres question
+                Vos dernieres questions
             </div>
             <div class="article colorlightgray">
                 <div class="horodatage">
@@ -443,7 +453,7 @@
                     Protection des données
                 </p>
                 <p>
-                    CGU
+                    <a href="cgu.html">CGU</a>
                 </p>
                 <p>
                     Ce site internet est hébergé par :
@@ -453,8 +463,12 @@
                 </p>
             </div>
             <div class="socialfooter">
-                <img class="logofacebook" src="./assets/img/facebook_logo.png" alt="Facebook logo">
-                <img class="logoyoutube" src="./assets/img/youtube_logo.png" alt="Youtube logo">
+                <a href="https://www.facebook.fr">
+                    <img class="logofacebook" src="./assets/img/facebook_logo.png" alt="Facebook logo">
+                </a>
+                <a href="https://www.youtube.fr">
+                    <img class="logoyoutube" src="./assets/img/youtube_logo.png" alt="Youtube logo">
+                </a>
             </div>
         </div>
     </footer>
