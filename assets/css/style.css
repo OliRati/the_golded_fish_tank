@@ -25,6 +25,12 @@ body {
     font-size: 16px;
 }
 
+.spacer {
+    width: 100vw;
+    height: 2.5em;
+    background-color: black;
+}
+
 h1 {
     font-family: 'Aileron';
     font-size: 1em;
@@ -45,12 +51,6 @@ h2 {
 
 img {
     width: 100%;
-}
-
-:target::before {
-    content: "";
-    display: block;
-    height: 2.5em;
 }
 
 header {
@@ -101,6 +101,13 @@ footer p {
     height: auto;
 }
 
+.anchor-section {
+    padding-top: 2.5em;
+    /* Adjust based on your header height + some extra space */
+    margin-top: -2.5em;
+    /* Same value as padding-top */
+}
+
 a {
     font-family: "Aileron";
     font-size: 1em;
@@ -144,6 +151,7 @@ a:hover {
 #hambmenu a {
     margin: 0;
     margin: 0 1em;
+    font-size: 0.7em;
 }
 
 #hambmenu a:hover {
@@ -161,6 +169,7 @@ a:hover {
 .menu a {
     margin: 0;
     margin-right: 1em;
+    font-size: 1em;
 }
 
 .menu a:hover {
@@ -535,7 +544,7 @@ form label {
     }
 
     a {
-        font-size: 0.8em;
+        font-size: 1.2em;
     }
 
     .hamburgermenu {
@@ -546,19 +555,24 @@ form label {
         display: flex;
     }
 
-    :target::before {
+    header {
         height: 3em;
     }
 
-    header {
+    .spacer {
         height: 3em;
+    }
+
+    .anchor-section {
+        padding-top: 3em;
+        margin-top: -3em;
     }
 }
 
 /* For desktops */
 @media screen and (min-width:1280px) {
-    .title {
-        font-size: 1.8em;
+    body {
+        font-size: 18px;
     }
 
     .element {
@@ -571,25 +585,12 @@ form label {
     }
 
     h1 {
-        font-size: 2em;
         margin-bottom: 0.5em;
-    }
-
-    .smalltitle {
-        font-size: 1.6em;
     }
 
     #mainlogo {
         right: 5em;
         bottom: 10em;
-    }
-
-    a {
-        font-size: 1.0em;
-    }
-
-    p {
-        font-size: 1.2em;
     }
 
     .tuile {
