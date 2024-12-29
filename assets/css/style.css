@@ -1,15 +1,50 @@
+@font-face {
+    font-family: 'DynaPuff';
+    src: url("../fonts/DynaPuff-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Aileron';
+    src: url("../fonts/Aileron-Regular.otf");
+}
+
+@font-face {
+    font-family: 'BreeSerif';
+    src: url("../fonts/BreeSerif_Reg.otf");
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
-img {
-    width: 100%;
-}
-
 body {
     background-color: #191919;
     color: antiquewhite;
+    font-family: 'Aileron';
+    font-size: 16px;
+}
+
+h1 {
+    font-family: 'Aileron';
+    font-size: 1em;
+    color: white;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.2em;
+}
+
+h2 {
+    font-family: 'Aileron';
+    font-size: 1.2em;
+    color: white;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.2em;
+}
+
+img {
+    width: 100%;
 }
 
 :target::before {
@@ -29,6 +64,10 @@ header {
     box-shadow: 1px 10px 25px -2px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 1px 10px 25px -2px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 1px 10px 25px -2px rgba(0, 0, 0, 0.75);
+}
+
+header a {
+    padding: 0;
 }
 
 .innerheader {
@@ -64,7 +103,7 @@ footer p {
 
 a {
     font-family: "Aileron";
-    font-size: 0.7em;
+    font-size: 1em;
     font-weight: 500;
     text-decoration: none;
     color: white;
@@ -160,15 +199,6 @@ a:hover {
     justify-content: space-between;
 }
 
-.bigtitle {
-    color: white;
-    font-family: 'Aileron';
-    font-size: 1em;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 0.2em;
-}
-
 .smalltitle {
     color: antiquewhite;
     font-family: 'Aileron';
@@ -184,33 +214,10 @@ a:hover {
     height: auto;
 }
 
-@font-face {
-    font-family: 'DynaPuff';
-    src: url("../fonts/DynaPuff-Regular.ttf");
-}
-
-@font-face {
-    font-family: 'Aileron';
-    src: url("../fonts/Aileron-Regular.otf");
-}
-
-@font-face {
-    font-family: 'BreeSerif';
-    src: url("../fonts/BreeSerif_Reg.otf");
-}
-
-.background {
-    background-color: #496cbe;
-    margin: 1rem;
-    border-radius: 10px;
-    width: calc(100vw - 2rem);
-    height: calc(100vh -2rem);
-}
-
 .title {
     font-family: 'DynaPuff';
     color: white;
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .golded {
@@ -219,8 +226,8 @@ a:hover {
 
 p {
     font-family: 'BreeSerif';
-    font-size: 1rem;
-    padding: 0.5rem 0;
+    font-size: 1em;
+    padding: 0.5em 0;
 }
 
 p::first-letter {
@@ -246,12 +253,6 @@ p::first-letter {
     flex-direction: column;
     justify-content: space-between;
     margin: 0.5em 0;
-}
-
-.tuile a {
-    font-family: 'Aileron';
-    font-size: 1em;
-    padding: 0 2em;
 }
 
 .tuile hr {
@@ -294,7 +295,6 @@ p::first-letter {
 .boxedtitle {
     border-radius: 15px;
     padding: 0.4em 0;
-    font-size: 1.5em;
     text-align: center;
 }
 
@@ -306,7 +306,7 @@ p::first-letter {
 
 .boxedbutton {
     border-radius: 15px;
-    padding: 0.25em;
+    padding: 0.25em 1.2em;
     margin: 0.5em auto;
     font-size: 1em;
     text-align: center;
@@ -320,7 +320,6 @@ p::first-letter {
 
 .roundedbox {
     border-radius: 15px;
-    font-size: 1.5em;
 }
 
 .innerbox {
@@ -394,7 +393,7 @@ p::first-letter {
 
 .horodatage {
     font-family: 'BreeSerif';
-    font-size: .5em;
+    font-size: 0.7em;
     font-weight: 700;
     color: #f3c94b;
 }
@@ -402,14 +401,14 @@ p::first-letter {
 .question {
     padding-left: 1em;
     font-family: 'BreeSerif';
-    font-size: .5em;
+    font-size: 0.7em;
     font-weight: 300;
 }
 
 .response {
     padding-left: 2em;
     font-family: 'BreeSerif';
-    font-size: .5em;
+    font-size: 0.7em;
     font-weight: 300;
     color: #9f9f9f;
 }
@@ -428,7 +427,7 @@ p::first-letter {
 
 form {
     width: 100%;
-    font-size: 0.8em;
+    font-size: 1em;
     font-family: 'Aileron';
 }
 
@@ -478,7 +477,7 @@ form label {
 
 .realisations {
     font-family: 'Aileron';
-    font-size: 2em;
+    font-size: 1.4em;
 }
 
 /* For large phones */
@@ -497,7 +496,7 @@ form label {
     }
 
     .title {
-        font-size: 1.4rem;
+        font-size: 1.4em;
     }
 
     .element {
@@ -526,7 +525,7 @@ form label {
         width: 48%;
     }
 
-    .bigtitle {
+    h1 {
         font-size: 1.5em;
         margin-bottom: 0.5em;
     }
@@ -550,7 +549,7 @@ form label {
     :target::before {
         height: 3em;
     }
-    
+
     header {
         height: 3em;
     }
@@ -559,7 +558,7 @@ form label {
 /* For desktops */
 @media screen and (min-width:1280px) {
     .title {
-        font-size: 1.8rem;
+        font-size: 1.8em;
     }
 
     .element {
@@ -571,7 +570,7 @@ form label {
         bottom: 15em;
     }
 
-    .bigtitle {
+    h1 {
         font-size: 2em;
         margin-bottom: 0.5em;
     }
@@ -590,7 +589,7 @@ form label {
     }
 
     p {
-        font-size: 1.2rem;
+        font-size: 1.2em;
     }
 
     .tuile {
