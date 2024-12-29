@@ -12,9 +12,23 @@ body {
     color: antiquewhite;
 }
 
+:target::before {
+    content: "";
+    display: block;
+    height: 3em;
+}
+
 header {
-    background-color: black;
+    position: fixed;
+    top: 0;
     width: 100vw;
+    height: 3em;
+    background-color: black;
+    z-index: 1000;
+
+    box-shadow: 1px 10px 25px -2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 10px 25px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 10px 25px -2px rgba(0, 0, 0, 0.75);
 }
 
 .innerheader {
@@ -87,7 +101,7 @@ a:hover {
     justify-content: center;
 }
 
-#mainpicture {
+.mainpicture {
     position: relative;
     width: 100vw;
     height: 50vw;
