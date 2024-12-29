@@ -15,14 +15,14 @@ body {
 :target::before {
     content: "";
     display: block;
-    height: 3em;
+    height: 2.5em;
 }
 
 header {
     position: fixed;
     top: 0;
     width: 100vw;
-    height: 3em;
+    height: 2.5em;
     background-color: black;
     z-index: 1000;
     overflow: hidden;
@@ -93,10 +93,10 @@ a:hover {
 #hambmenu {
     display: none;
     position: fixed;
-    top: 3em;
+    top: 2.5em;
     left: 0;
     width: 100vw;
-    height: 1em;
+    height: 1.5em;
     background-color: black;
     z-index: 1000;
     overflow: hidden;
@@ -545,6 +545,14 @@ form label {
 
     .menu {
         display: flex;
+    }
+
+    :target::before {
+        height: 3em;
+    }
+    
+    header {
+        height: 3em;
     }
 }
 
