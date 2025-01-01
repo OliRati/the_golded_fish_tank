@@ -344,29 +344,25 @@
                         <img src="./assets/img/contact.jpg" alt="">
                     </div>
                     <div>
-                        <form method="post">
+                        <form id="contactForm">
                             <div>Nom :</div>
                             <div>
-                                <input type="text" name="name" id="formname">
+                                <input type="text" id="contactFormName" required>
                             </div>
                             <div>Email :</div>
                             <div>
-                                <input type="email" name="email" id="formemail">
+                                <input type="email" id="contactFormEmail" required>
                             </div>
                             <div>Téléphone :</div>
                             <div>
-                                <input type="number" name="phone" id="formphone">
-                            </div>
-                            <div>Sujet :</div>
-                            <div>
-                                <input type="text" name="subject" id="formsubject">
+                                <input type="number" id="contactFormPhone" required>
                             </div>
                             <div>Votre message :</div>
                             <div>
-                                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                                <textarea name="message" id="contactFormMessage" cols="30" rows="10"></textarea>
                             </div>
                             <div class="checkframe">
-                                <input type="checkbox" name="autorization" id="autorization">
+                                <input type="checkbox" id="contactFormTerms">
                                 <label for="autorization">
                                     Nous autorisez-vous à vous contacter par email pour vous proposer
                                     des offres ou demander votre avis.
@@ -374,6 +370,7 @@
                             </div>
                             <input class="boxedbutton color2" type="submit" value="Envoyer">
                         </form>
+                        <div id="errorForm"></div>
                     </div>
                 </div>
             </div>
@@ -466,7 +463,7 @@
             </div>
             <div>
                 <p>
-                    Protection des données
+                    <a href="politique.html">Politique de confidentialité</a>
                 </p>
                 <p>
                     <a href="cgu.html">CGU</a>

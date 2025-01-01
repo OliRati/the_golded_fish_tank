@@ -484,6 +484,12 @@ form label {
     font-size: 0.8em;
 }
 
+.errormessage {
+    color: coral;
+    font-family: 'Aileron';
+    font-size: 1em;
+}
+
 .realisations {
     font-family: 'Aileron';
     font-size: 1.4em;
