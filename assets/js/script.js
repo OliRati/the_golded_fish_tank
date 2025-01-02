@@ -1,11 +1,20 @@
+/* Hamburger menu */
+
 const hamburgericon = document.querySelector(".hamburgericon");
+const menu = document.getElementById("hambmenu");
+const menuLink = document.querySelectorAll(".menuItem");
 
 hamburgericon.addEventListener("click", () => {
-    const menu = document.getElementById("hambmenu");
     menu.style.display = menu.style.display === "block" ? "none" : "block";
 });
 
-/* Form validation */
+menuLink.forEach((link) => {
+    link.addEventListener("click", () => {
+        menu.style.display = "none";
+    });
+});
+
+/* Contact form validation */
 
 document.getElementById('contactForm').addEventListener('submit', (event) => {
     event.preventDefault();
