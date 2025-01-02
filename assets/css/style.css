@@ -95,10 +95,28 @@ footer p {
     margin: 0 0.5em;
 }
 
+.mentionslegales {
+    width: 75vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.mentionitem {
+    width: 15em;
+    margin-right: 1em;
+}
+
 .footerlogo {
     width: 25vw;
     max-width: 150px;
     height: auto;
+    margin-right: 1em;
+}
+
+.footertab {
+    margin-left: 1.5em;
 }
 
 .anchor-section {
@@ -190,6 +208,8 @@ a:hover {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1em;
 }
 
 .mainpicture {
@@ -368,7 +388,7 @@ p::first-letter {
 
 .element {
     width: 95vw;
-    margin: 0.5em auto;
+    margin: 0 auto;
 }
 
 .miniatures {
@@ -518,7 +538,7 @@ form label {
 
     .element {
         width: 90vw;
-        margin: 0.5em auto;
+        margin: 0 auto;
     }
 
     .maintitle {
@@ -585,7 +605,7 @@ form label {
 
     .element {
         width: 1200px;
-        margin: 0.5em auto;
+        margin: 0 auto;
     }
 
     .maintitle {
