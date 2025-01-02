@@ -43,7 +43,7 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
     }
 
     if (errors.length > 0) {
-        document.getElementById('errorForm').innerHTML = errors.join('<br>');
+        document.getElementById('errorForm').innerHTML = '<p class="errormessage">' + errors.join('<br>') + '</p>';
     } else {
         // Send form to server
         fetch('./contact.php', {
