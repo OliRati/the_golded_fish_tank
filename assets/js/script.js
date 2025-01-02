@@ -80,3 +80,82 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
             });
     }
 });
+
+/* Json database functions */
+
+let database = {};
+
+let reviewsStartIndex = 0;
+let forumStartIndex = 0;
+
+function displayReviewData() {
+    let reviews = database.reviews;
+    let reviewsList = document.getElementById('reviewItemList');
+    let added = 0;
+
+    for (let i = reviewsStartIndex; i < Math.min(reviews.length, reviewsStartIndex + 3); i++) {
+        let reviewItem = document.createElement('div');
+        reviewItem.classList.add('article');
+        reviewItem.classList.add('colorlightgray');
+        reviewItem.innerHTML = '<div class="horodatage">Avis du ' + reviews[i].date + ' de ' + reviews[i].name + '</div><hr><div class="question">' + reviews[i].message + '</div><div class="response">' + reviews[i].response + '</div>';
+        reviewsList.appendChild(reviewItem);
+        added++;
+    }
+
+    reviewsStartIndex += added;
+
+    if (reviewsStartIndex >= reviews.length) {
+        moreReviews.style.display = 'none';
+    }
+}
+
+const moreReviews = document.getElementById('moreReviews');
+moreReviews.addEventListener('click', () => {
+    displayReviewData();
+});
+
+function displayForumData() {
+    let forum = database.forum;
+    let forumList = document.getElementById('forumItemList');
+    let added = 0;
+
+    for (let i = forumStartIndex; i < Math.min(forum.length, forumStartIndex + 3); i++) {
+        let forumItem = document.createElement('div');
+        forumItem.classList.add('article');
+        forumItem.classList.add('colorlightgray');
+        forumItem.innerHTML = '<div class="horodatage">Demande du ' + forum[i].date + ' de ' + forum[i].name + '</div><hr><div class="question">' + forum[i].message + '</div><div class="response">' + forum[i].response + '</div>';
+        forumList.appendChild(forumItem);
+        added++;
+    }
+
+    forumStartIndex += added;
+
+    if (forumStartIndex >= forum.length) {
+        moreForum.style.display = 'none';
+    }
+}
+
+const moreForum = document.getElementById('moreForum');
+moreForum.addEventListener('click', () => {
+    displayForumData();
+});
+
+function getJsonData() {
+    fetch('./assets/json/database.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            database = data;
+            displayReviewData();
+            displayForumData();
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
+getJsonData();

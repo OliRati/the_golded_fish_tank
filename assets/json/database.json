@@ -1,0 +1,122 @@
+{
+    "forum": [
+        {
+            "date": "27/03/2025",
+            "name": "Paul M.",
+            "message": "Quel type de poissons recommandez-vous pour un aquarium d'eau douce de 100 litres ?",
+            "response": "Pour un aquarium de 100 litres, nous recommandons des poissons comme les guppys, les néons, et les corydoras. Ces espèces sont adaptées à ce volume et cohabitent bien ensemble. Assurez-vous de maintenir une bonne qualité de l'eau et de suivre un régime alimentaire équilibré pour vos poissons."
+        },
+        {
+            "date": "19/03/2025",
+            "name": "Claire T.",
+            "message": "Comment puis-je éviter les algues dans mon aquarium d'eau de mer ?",
+            "response": "Pour éviter les algues, assurez-vous de ne pas suralimenter vos poissons et de maintenir un bon équilibre des nutriments dans l'eau. Utilisez un éclairage approprié et contrôlez la durée d'éclairage. Un bon système de filtration et des changements d'eau réguliers sont également essentiels."
+        },
+        {
+            "date": "7/03/2025",
+            "name": "Lucas B.",
+            "message": "Quels sont les avantages d'un aquarium d'eau de mer par rapport à un aquarium d'eau douce ?",
+            "response": "Un aquarium d'eau de mer offre une diversité de couleurs et d'espèces marines fascinantes. Les coraux et les poissons marins peuvent créer un écosystème vibrant et dynamique. Cependant, ils nécessitent plus de soins et une gestion précise des paramètres de l'eau. Si vous êtes prêt à investir du temps et des efforts, un aquarium d'eau de mer peut être extrêmement gratifiant."
+        },
+        {
+            "date": "26/02/2025",
+            "name": "John 4",
+            "message": "I need help !",
+            "response": "Thank you"
+        },
+        {
+            "date": "19/02/2025",
+            "name": "John 5",
+            "message": "I need help !",
+            "response": "Thank you"
+        },
+        {
+            "date": "31/01/2025",
+            "name": "John 6",
+            "message": "I need help !",
+            "response": "Thank you"
+        },
+        {
+            "date": "27/01/2025",
+            "name": "John 7",
+            "message": "I need your help !",
+            "response": "Thank you"
+        }
+    ],
+    "reviews": [
+        {
+            "date": "23/03/2025",
+            "name": "Marie L.",
+            "message": "J'ai fait appel à The Golded Fish Tank pour la création d'un aquarium d'eau de mer sur mesure dans mon salon. Le résultat est époustouflant! L'équipe a été professionnelle du début à la fin, et l'aquarium est devenu la pièce maîtresse de notre maison. Je recommande vivement leurs services.",
+            "response": "Merci beaucoup, Marie! Nous sommes ravis que vous soyez satisfaite de votre nouvel aquarium. N'hésitez pas à nous contacter pour tout besoin d'entretien ou de conseils supplémentaires."
+        },
+        {
+            "date": "15/03/2025",
+            "name": "Sophie R.",
+            "message": "J'ai sollicité The Golded Fish Tank pour des conseils sur l'entretien de mon aquarium d'eau de mer. Leur expertise et leurs recommandations ont été très utiles. Mon aquarium est maintenant en parfaite santé grâce à leurs conseils avisés.",
+            "response": "Merci, Sophie! Nous sommes ravis d'avoir pu vous aider. N'hésitez pas à nous contacter pour toute autre question ou besoin d'assistance."
+        },
+        {
+            "date": "5/03/2025",
+            "name": "Jean-Marc D.",
+            "message": "L'équipe de The Golded Fish Tank a rénové notre ancien aquarium d'eau douce. Ils ont modernisé le système de filtration et ajouté de nouvelles plantes aquatiques. Le résultat est magnifique et nos poissons semblent plus heureux que jamais. Un service impeccable!",
+            "response": "Merci, Jean-Marc! Nous sommes heureux que vous et vos poissons appréciez la rénovation. Nous restons à votre disposition pour toute question ou besoin futur."
+        },
+        {
+            "date": "3/03/2025",
+            "name": "Martin 4",
+            "message": "I love this site!",
+            "response": "Thank you"
+        },
+        {
+            "date": "28/02/2025",
+            "name": "Martin 5",
+            "message": "I love this site!",
+            "response": "Thank you"
+        },
+        {
+            "date": "14/02/2025",
+            "name": "Martin 6",
+            "message": "I love this site!",
+            "response": "Thank you"
+        }
+    ],
+    "users": [
+        {
+            "name": "Paul M.",
+            "email": "paul@local",
+            "login": "paul",
+            "password": "123456"
+        },
+        {
+            "name": "Claire T.",
+            "email": "claire@local",
+            "login": "claire",
+            "password": "123456"
+        },
+        {
+            "name": "Lucas B.",
+            "email": "lucas@local",
+            "login": "lucas",
+            "password": "123456"
+        },
+        {
+            "name": "Marie L.",
+            "email": "marie@local",
+            "login": "marie",
+            "password": "123456"
+        },
+        {
+            "name": "Sophie R.",
+            "email": "sophie@local",
+            "login": "sophie",
+            "password": "123456"
+        },
+        {
+            "name": "Jean-Marc D.",
+            "email": "jean-marc@local",
+            "login": "jean-marc",
+            "password": "123456"
+        }
+    ]
+}
