@@ -76,6 +76,7 @@ header a {
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
+    height: 100%;
 }
 
 footer {
@@ -270,7 +271,8 @@ p::first-letter {
     flex-wrap: wrap;
     justify-content: space-between;
     width: 250px;
-    margin: 0 auto;
+    margin: 1em auto;
+    gap: 1em;
 }
 
 .tuile {
@@ -282,7 +284,6 @@ p::first-letter {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0.5em 0;
 }
 
 .tuile hr {
@@ -357,6 +358,10 @@ p::first-letter {
     padding-top: 0.5em;
 }
 
+.innerboxabout {
+    margin: 0.5em;
+}
+
 .center {
     text-align: center;
     font-weight: 600;
@@ -364,12 +369,6 @@ p::first-letter {
 }
 
 .about {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.about div {
     text-align: justify;
     width: 100%;
 }
@@ -379,7 +378,7 @@ p::first-letter {
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    margin: 1em 0;
+    padding: 1em 0;
 }
 
 .dualcolons>div {
@@ -447,7 +446,6 @@ p::first-letter {
 .image {
     border-radius: 15px;
     overflow: hidden;
-    margin-bottom: 0.5em;
 }
 
 .image img {
@@ -503,6 +501,10 @@ form input[type='checkbox'] {
 form label {
     color: white;
     font-family: 'Aileron';
+    font-size: 1em;
+}
+
+form .checkframe label {
     font-size: 0.8em;
 }
 
@@ -543,15 +545,6 @@ form label {
 
     .maintitle {
         bottom: 7em;
-    }
-
-    .about {
-        flex-wrap: nowrap;
-    }
-
-    .about div {
-        text-align: justify;
-        width: 48%;
     }
 
     .dualcolons {
