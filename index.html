@@ -46,6 +46,30 @@
         </div>
     </header>
 
+    <div id="loginFrame">
+        <h2 class="boxedtitle color1">
+            Veuillez vous identifier
+        </h2>
+        <p>Vous devez être un utilisateur enregistré pour pouvoir déposer un avis ou participer au forum de dicussion.</p>
+        <form id="loginForm">
+            <label for="loginFormName">Nom d'utilisateur :</label>
+            <div>
+                <input type="text" id="loginFormName" required>
+            </div>
+            <label for="loginFormPassword">Mot de passe :</label>
+            <div>
+                <input type="password" id="contactFormEmail" required>
+            </div>
+            <div class="inline">
+                <input class="boxedbutton color2" type="submit" value="Valider">
+                <input class="boxedbutton color2" type="reset" value="Annuler">
+            </div>
+        </form>
+        <p>Pas encore de compte utilisateur ?</p>
+        <form id="newUserForm">
+            <input class="boxedbutton color2" type="submit" value="Créer un compte">
+        </form>
+    </div>
 
     <div class="spacer"></div>
 
@@ -286,7 +310,7 @@
             </div>
             <div id="reviewItemList"></div>
             <div class="groupbutton">
-                <div class="boxedbutton color1">Déposer un avis</div>
+                <div class="boxedbutton color1" id="addReview">Déposer un avis</div>
                 <div class="boxedbutton color1" id="moreReviews">Voir plus d'avis</div>
             </div>
         </div>
@@ -343,8 +367,7 @@
             </div>
             <div id="forumItemList"></div>
             <div class="groupbutton">
-
-                <div class="boxedbutton color3">Poser une question</div>
+                <div class="boxedbutton color3" id="addForum">Poser une question</div>
                 <div class="boxedbutton color3" id="moreForum">Voir plus de questions</div>
             </div>
         </div>

@@ -1,3 +1,5 @@
+let loggedIn = false;
+
 /* Hamburger menu */
 
 const hamburgericon = document.querySelector(".hamburgericon");
@@ -159,3 +161,32 @@ function getJsonData() {
 }
 
 getJsonData();
+
+/* Taking care of Forum */
+
+function requestLogin() {
+    const loginFrame = document.getElementById("loginFrame");
+    loginFrame.style.display = "block";
+    loginFrame.style.animation = "moveIn 0.5s forwards";
+
+    document.getElementById('loginForm').addEventListener('reset', () => {
+        loginFrame.style.animation = "moveOut 0.5s forwards";
+
+        setTimeout( () => {
+            loginFrame.style.display = "none";
+            loginFrame.style.animation = "";
+        }, 500);
+    });
+}
+
+const addForum = document.getElementById('addForum');
+addForum.addEventListener('click', () => {
+    if (!loggedIn)
+        requestLogin();
+});
+
+const addReview = document.getElementById("addReview");
+addReview.addEventListener('click', () => {
+    if (!loggedIn)
+        requestLogin();
+});
