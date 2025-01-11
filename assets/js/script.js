@@ -162,7 +162,7 @@ function getJsonData() {
 
 getJsonData();
 
-/* Taking care of Forum */
+/* Taking care of Forum and Review usage */
 
 function requestLogin() {
     const loginFrame = document.getElementById("loginFrame");
@@ -172,7 +172,7 @@ function requestLogin() {
     document.getElementById('loginForm').addEventListener('reset', () => {
         loginFrame.style.animation = "moveOut 0.5s forwards";
 
-        setTimeout( () => {
+        setTimeout(() => {
             loginFrame.style.display = "none";
             loginFrame.style.animation = "";
         }, 500);
@@ -189,4 +189,40 @@ const addReview = document.getElementById("addReview");
 addReview.addEventListener('click', () => {
     if (!loggedIn)
         requestLogin();
+});
+
+/* Create new user functions */
+
+const newUserFrame = document.getElementById("newUserFrame");
+const createUserForm = document.getElementById("createUserForm");
+
+function moveOutNewUserFrame() {
+    newUserFrame.style.animation = "moveOut 0.5s forwards";
+
+    setTimeout(() => {
+        newUserFrame.style.display = "none";
+        newUserFrame.style.animation = "";
+    }, 500);
+}
+
+createUserForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    newUserFrame.style.display = 'block';
+    newUserFrame.style.animation = "moveIn 0.5s forwards";
+});
+
+const newUserForm = document.getElementById("newUserForm");
+
+newUserForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    /* Check password coherence and validation */
+
+    /* If everything is OK */
+    moveOutNewUserFrame();
+});
+
+newUserForm.addEventListener('reset', () => {
+    moveOutNewUserFrame();
 });

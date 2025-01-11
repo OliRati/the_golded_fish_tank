@@ -50,7 +50,8 @@
         <h2 class="boxedtitle color1">
             Veuillez vous identifier
         </h2>
-        <p>Vous devez être un utilisateur enregistré pour pouvoir déposer un avis ou participer au forum de dicussion.</p>
+        <p>Vous devez être un utilisateur enregistré pour pouvoir déposer un avis ou participer au forum de dicussion.
+        </p>
         <form id="loginForm">
             <label for="loginFormName">Nom d'utilisateur :</label>
             <div>
@@ -58,7 +59,7 @@
             </div>
             <label for="loginFormPassword">Mot de passe :</label>
             <div>
-                <input type="password" id="contactFormEmail" required>
+                <input type="password" id="loginFormPassword" required>
             </div>
             <div class="inline">
                 <input class="boxedbutton color2" type="submit" value="Valider">
@@ -66,8 +67,32 @@
             </div>
         </form>
         <p>Pas encore de compte utilisateur ?</p>
-        <form id="newUserForm">
+        <form id="createUserForm">
             <input class="boxedbutton color2" type="submit" value="Créer un compte">
+        </form>
+    </div>
+
+    <div id="newUserFrame">
+        <h2 class="boxedtitle color1">
+            Enregistrez-vous
+        </h2>
+        <form id="newUserForm">
+            <label for="newUserFormName">Nom d'utilisateur :</label>
+            <div>
+                <input type="text" id="newIserFormName" required>
+            </div>
+            <label for="newUserFormPassword">Mot de passe :</label>
+            <div>
+                <input type="password" id="newUserFormPassword" required>
+            </div>
+            <label for="newUserFormPasswordRepeat">Répétez le mot de passe :</label>
+            <div>
+                <input type="password" id="newUserFormPasswordRepeat" required>
+            </div>
+            <div class="inline">
+                <input class="boxedbutton color2" type="submit" value="Valider">
+                <input class="boxedbutton color2" type="reset" value="Annuler">
+            </div>
         </form>
     </div>
 

@@ -45,6 +45,7 @@ body {
     }
 }
 
+#newUserFrame,
 #loginFrame {
     display: none;
     position: fixed;
@@ -572,6 +573,7 @@ form .checkframe label {
         width: 100%;
     }
 
+    #newUserFrame,
     #loginFrame {
         width: 500px;
     }
