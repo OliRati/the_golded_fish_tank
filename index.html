@@ -55,17 +55,18 @@
         <form id="loginForm">
             <label for="loginFormName">Nom d'utilisateur :</label>
             <div>
-                <input type="text" id="loginFormName" required>
+                <input type="text" autocomplete="username" id="loginFormName" required>
             </div>
             <label for="loginFormPassword">Mot de passe :</label>
             <div>
-                <input type="password" id="loginFormPassword" required>
+                <input type="password" autocomplete="current-password" id="loginFormPassword" required>
             </div>
             <div class="inline">
                 <input class="boxedbutton color2" type="submit" value="Valider">
                 <input class="boxedbutton color2" type="reset" value="Annuler">
             </div>
         </form>
+        <div id="loginError"></div>
         <p>Pas encore de compte utilisateur ?</p>
         <form id="createUserForm">
             <input class="boxedbutton color2" type="submit" value="Créer un compte">
@@ -77,23 +78,24 @@
             Enregistrez-vous
         </h2>
         <form id="newUserForm">
-            <label for="newUserFormName">Nom d'utilisateur :</label>
+            <label for="username">Nom d'utilisateur :</label>
             <div>
-                <input type="text" id="newIserFormName" required>
+                <input type="text" autocomplete="username" name="username" required>
             </div>
-            <label for="newUserFormPassword">Mot de passe :</label>
+            <label for="userpass">Mot de passe :</label>
             <div>
-                <input type="password" id="newUserFormPassword" required>
+                <input type="password" autocomplete="current-password" name="userpass" required>
             </div>
-            <label for="newUserFormPasswordRepeat">Répétez le mot de passe :</label>
+            <label for="userpasscheck">Répétez le mot de passe :</label>
             <div>
-                <input type="password" id="newUserFormPasswordRepeat" required>
+                <input type="password" autocomplete="current-password" name="userpasscheck" required>
             </div>
             <div class="inline">
                 <input class="boxedbutton color2" type="submit" value="Valider">
                 <input class="boxedbutton color2" type="reset" value="Annuler">
             </div>
         </form>
+        <div id="newUserError"></div>
     </div>
 
     <div class="spacer"></div>

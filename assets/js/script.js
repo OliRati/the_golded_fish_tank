@@ -1,3 +1,9 @@
+/* General functions */
+
+function errorMessage(message) {
+    return '<p class="errormessage">' + message + '</p>';
+}
+
 let loggedIn = false;
 
 /* Hamburger menu */
@@ -45,7 +51,7 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
     }
 
     if (errors.length > 0) {
-        document.getElementById('errorForm').innerHTML = '<p class="errormessage">' + errors.join('<br>') + '</p>';
+        document.getElementById('errorForm').innerHTML = errorMessage(errors.join('<br>'));
     } else {
         // Send form to server
         fetch('./contact.php', {
@@ -77,7 +83,7 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
                 return response.text();
             })
             .catch(error => {
-                document.getElementById('errorForm').innerHTML = '<p class="errormessage">Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.</p>';
+                document.getElementById('errorForm').innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
                 console.error('There has been a problem with your fetch operation:', error);
             });
     }
@@ -164,18 +170,38 @@ getJsonData();
 
 /* Taking care of Forum and Review usage */
 
+const loginFrame = document.getElementById("loginFrame");
+
+function moveOutLoginFrame() {
+    loginFrame.style.animation = "moveOut 0.5s forwards";
+
+    setTimeout(() => {
+        loginFrame.style.display = "none";
+        loginFrame.style.animation = "";
+    }, 500);
+}
+
 function requestLogin() {
-    const loginFrame = document.getElementById("loginFrame");
+    const loginForm = document.getElementById("loginForm");
+    const loginError = document.getElementById("loginError");
+    loginError.innerHTML = "";
+
     loginFrame.style.display = "block";
     loginFrame.style.animation = "moveIn 0.5s forwards";
 
-    document.getElementById('loginForm').addEventListener('reset', () => {
-        loginFrame.style.animation = "moveOut 0.5s forwards";
+    loginForm.addEventListener('reset', () => {
+        moveOutLoginFrame();
+    });
 
-        setTimeout(() => {
-            loginFrame.style.display = "none";
-            loginFrame.style.animation = "";
-        }, 500);
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!loggedIn) {
+            loginError.innerHTML = errorMessage('Nom d\'utilisateur et / ou mot de passe incorrecte !');
+        }
+        else {
+            moveOutLoginFrame();
+        }
     });
 }
 
@@ -195,6 +221,7 @@ addReview.addEventListener('click', () => {
 
 const newUserFrame = document.getElementById("newUserFrame");
 const createUserForm = document.getElementById("createUserForm");
+const newUserError = document.getElementById("newUserError");
 
 function moveOutNewUserFrame() {
     newUserFrame.style.animation = "moveOut 0.5s forwards";
@@ -210,6 +237,7 @@ createUserForm.addEventListener('submit', (event) => {
 
     newUserFrame.style.display = 'block';
     newUserFrame.style.animation = "moveIn 0.5s forwards";
+    newUserError.innerHTML = "";
 });
 
 const newUserForm = document.getElementById("newUserForm");
@@ -217,10 +245,55 @@ const newUserForm = document.getElementById("newUserForm");
 newUserForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    /* Check password coherence and validation */
+    // Get form data
 
-    /* If everything is OK */
-    moveOutNewUserFrame();
+    const formData = new FormData(event.target);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    /* Check username and password coherence */
+
+    if (data['username'].length < 2) {
+        newUserError.innerHTML = errorMessage('Saisie incorrecte, entrez un nom d\'utilisateur valide !');
+        return;
+    }
+
+    if (data['userpass'] != data['userpasscheck']) {
+        newUserError.innerHTML = errorMessage('Saisie incorrecte, verifiez les mots de passe !');
+        return;
+    }
+
+    if (data['userpass'].length < 8) {
+        newUserError.innerHTML = errorMessage('Pour améliorer votre sécurité, la longueur minimale du mot de passe est de 8 caractères !');
+        return;
+    }
+
+    // Transmit data to server
+
+    fetch('./adduser.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok)
+                throw new Error('Network response was not ok');
+
+            return response.json();
+        })
+        .then(result => {
+            console.log('Success:', result);
+            moveOutNewUserFrame();
+        })
+        .catch(error => {
+            newUserError.innerHTML = errorMessage('Erreur du serveur. Impossible de traiter votre demande.');
+            console.error('Error:', error);
+        });
+
 });
 
 newUserForm.addEventListener('reset', () => {
