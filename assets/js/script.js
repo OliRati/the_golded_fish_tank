@@ -8,17 +8,26 @@ let loggedIn = false;
 
 /* Hamburger menu */
 
-const hamburgericon = document.querySelector(".hamburgericon");
+const hamburgericon = document.getElementById("hamburgericon");
 const menu = document.getElementById("hambmenu");
 const menuLink = document.querySelectorAll(".menuItem");
 
 hamburgericon.addEventListener("click", () => {
     menu.style.display = menu.style.display === "block" ? "none" : "block";
+    if (menu.style.display === "block") {
+        hamburgericon.style.animation = "rotateRight 0.5s forwards";
+    }
+    else {
+        hamburgericon.style.animation = "rotateLeft 0.5s forwards";
+    }
+
 });
 
 menuLink.forEach((link) => {
     link.addEventListener("click", () => {
         menu.style.display = "none";
+
+        hamburgericon.style.animation = "rotateLeft 0.5s forwards";
     });
 });
 

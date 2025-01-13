@@ -185,12 +185,32 @@ a:hover {
     font-weight: 700;
 }
 
-.hamburgericon {
+@keyframes rotateRight {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes rotateLeft {
+    0% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+#hamburgericon {
     height: 2em;
     width: auto
 }
 
-.hamburgericon:hover {
+#hamburgericon:hover {
     cursor: pointer;
 }
 
