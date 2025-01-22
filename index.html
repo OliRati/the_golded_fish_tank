@@ -78,6 +78,10 @@
             Enregistrez-vous
         </h2>
         <form id="newUserForm">
+            <label for="email">Email :</label>
+            <div>
+                <input type="email" autocomplete="email" name="email" required>
+            </div>
             <label for="username">Nom d'utilisateur :</label>
             <div>
                 <input type="text" autocomplete="username" name="username" required>
@@ -86,7 +90,7 @@
             <div>
                 <input type="password" autocomplete="current-password" name="userpass" required>
             </div>
-            <label for="userpasscheck">Répétez le mot de passe :</label>
+            <label for="userpasscheck">Confirmez le mot de passe :</label>
             <div>
                 <input type="password" autocomplete="current-password" name="userpasscheck" required>
             </div>
@@ -415,9 +419,7 @@
             </div>
             <div class="mentionslegales">
                 <div class="mentionitem">
-                    <p>
-                        The Golded Fish Tank
-                    </p>
+                    <div class="title">The <span class="golded">Golded</span> Fish Tank</div>
                     <p>
                         Société type enregistrée à la CCI de Caen
                     </p>
@@ -439,10 +441,13 @@
                 </div>
                 <div class="mentionitem">
                     <p>
-                        <a href="politique.html">Politique de confidentialité</a>
+                        <a href="politique.html" target="_blank">Politique de confidentialité</a>
                     </p>
                     <p>
-                        <a href="cgu.html">CGU</a>
+                        <a href="cgu.html" target="_blank">CGU</a>
+                    </p>
+                    <p>
+                        <a href="cookies.html" target="_blank">Déclaration relative aux cookies</a>
                     </p>
                     <p>
                         Ce site internet est hébergé par :

@@ -1,10 +1,12 @@
+/* Global variables */
+
+let loggedIn = false;
+
 /* General functions */
 
 function errorMessage(message) {
     return '<p class="errormessage">' + message + '</p>';
 }
-
-let loggedIn = false;
 
 /* Hamburger menu */
 
@@ -63,7 +65,7 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
         document.getElementById('errorForm').innerHTML = errorMessage(errors.join('<br>'));
     } else {
         // Send form to server
-        fetch('./contact.php', {
+        fetch('./php/contact.php', {
             method: 'POST',
             body: JSON.stringify({
                 username: username,
@@ -181,6 +183,11 @@ getJsonData();
 
 const loginFrame = document.getElementById("loginFrame");
 
+function moveInLoginFrame() {
+    loginFrame.style.display = "block";
+    loginFrame.style.animation = "moveIn 0.5s forwards";
+}
+
 function moveOutLoginFrame() {
     loginFrame.style.animation = "moveOut 0.5s forwards";
 
@@ -195,8 +202,7 @@ function requestLogin() {
     const loginError = document.getElementById("loginError");
     loginError.innerHTML = "";
 
-    loginFrame.style.display = "block";
-    loginFrame.style.animation = "moveIn 0.5s forwards";
+    moveInLoginFrame();
 
     loginForm.addEventListener('reset', () => {
         moveOutLoginFrame();
@@ -244,6 +250,8 @@ function moveOutNewUserFrame() {
 createUserForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    moveOutLoginFrame();
+
     newUserFrame.style.display = 'block';
     newUserFrame.style.animation = "moveIn 0.5s forwards";
     newUserError.innerHTML = "";
@@ -264,6 +272,11 @@ newUserForm.addEventListener('submit', (event) => {
 
     /* Check username and password coherence */
 
+    if (data['email'].length < 5 || data['email'].indexOf('@') === -1) {
+        newUserError.innerHTML = errorMessage('Saisie incorrecte, entrez une adresse email valide !');
+        return;
+    }
+
     if (data['username'].length < 2) {
         newUserError.innerHTML = errorMessage('Saisie incorrecte, entrez un nom d\'utilisateur valide !');
         return;
@@ -281,7 +294,7 @@ newUserForm.addEventListener('submit', (event) => {
 
     // Transmit data to server
 
-    fetch('./adduser.php', {
+    fetch('./php/adduser.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -307,4 +320,5 @@ newUserForm.addEventListener('submit', (event) => {
 
 newUserForm.addEventListener('reset', () => {
     moveOutNewUserFrame();
+    requestLogin();
 });
