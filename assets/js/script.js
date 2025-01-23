@@ -33,6 +33,25 @@ menuLink.forEach((link) => {
     });
 });
 
+/* Animate cards when in view */
+
+const animatedElement = document.querySelectorAll('.animated-card');
+
+const observer = new IntersectionObserver((entries) => {
+    console.dir(entries);
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+        } else {
+            entry.target.classList.remove('in-view');
+        }
+    });
+});
+
+animatedElement.forEach((element) => {
+    observer.observe(element);
+});
+
 /* Contact form validation */
 
 document.getElementById('contactForm').addEventListener('submit', (event) => {

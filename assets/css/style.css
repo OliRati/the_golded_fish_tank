@@ -262,6 +262,29 @@ a:hover {
 
 /* End of Standard Menu */
 
+/* Animated tiles in viewport */
+
+.animated-card {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.animated-card.in-view {
+    opacity: 1;
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* End of Animated tiles in viewport */
+
 .socialheader {
     display: flex;
     align-items: center;
@@ -458,12 +481,13 @@ p::first-letter {
 .miniatures {
     display: flex;
     flex-wrap: wrap;
+    margin: 1em 0;
+    gap: 1em;
 }
 
 .miniatures img {
     height: 100px;
     width: auto;
-    margin: 10px;
 }
 
 .miniatures img:hover {
