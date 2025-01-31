@@ -53,13 +53,13 @@
         <p>Vous devez être un utilisateur enregistré pour pouvoir déposer un avis ou participer au forum de dicussion.
         </p>
         <form id="loginForm">
-            <label for="loginFormName">Nom d'utilisateur :</label>
+            <label for="username">Nom d'utilisateur :</label>
             <div>
-                <input type="text" autocomplete="username" id="loginFormName" required>
+                <input type="text" autocomplete="username" id="loginFormName" name="username" required>
             </div>
-            <label for="loginFormPassword">Mot de passe :</label>
+            <label for="password">Mot de passe :</label>
             <div>
-                <input type="password" autocomplete="current-password" id="loginFormPassword" required>
+                <input type="password" autocomplete="current-password" id="loginFormPassword" name="password" required>
             </div>
             <div class="inline">
                 <input class="boxedbutton color2" type="submit" value="Valider">
@@ -100,6 +100,42 @@
             </div>
         </form>
         <div id="newUserError"></div>
+    </div>
+
+    <div id="newForumFrame">
+        <h2 class="boxedtitle color1">
+            Posez votre question
+        </h2>
+        <form id="newForumForm">
+            <label for="message">Saisissez votre message :</label>
+            <div>
+                <textarea name="message" id="reviewMessage" name="message" cols="30" rows="10"></textarea>
+            </div>
+            <div class="inline">
+                <input class="boxedbutton color2" type="submit" value="Envoyer">
+                <input class="boxedbutton color2" type="reset" value="Annuler">
+            </div>
+        </form>
+        <p>Avertissement : votre question ainsi que notre réponse ne seront publiées qu'après un délais due à la
+            nécessite d'assurer la modération du contenu en application de nos conditions générales d'utilisation.</p>
+    </div>
+
+    <div id="newReviewFrame">
+        <h2 class="boxedtitle color1">
+            Déposez votre avis
+        </h2>
+        <form id="newReviewForm">
+            <label for="message">Saisissez votre message :</label>
+            <div>
+                <textarea name="message" id="reviewMessage" name="message" cols="30" rows="10"></textarea>
+            </div>
+            <div class="inline">
+                <input class="boxedbutton color2" type="submit" value="Envoyer">
+                <input class="boxedbutton color2" type="reset" value="Annuler">
+            </div>
+        </form>
+        <p>Avertissement : votre avis ainsi que notre réponse ne seront publiées qu'après un délais due à la nécessite
+            d'assurer la modération du contenu en application de nos conditions générales d'utilisation.</p>
     </div>
 
     <div class="spacer"></div>
@@ -249,22 +285,24 @@
         </div>
     </section>
 
-    <div class="element">
-        <div class="realisations">Nos réalisations :</div>
-        <div class="miniatures">
-            <img src="./assets/img/realisations/image1.jpg" alt="">
-            <img src="./assets/img/realisations/image2.jpg" alt="">
-            <img src="./assets/img/realisations/image3.jpg" alt="">
-            <img src="./assets/img/realisations/image4.jpg" alt="">
-            <img src="./assets/img/realisations/image5.jpg" alt="">
-            <img src="./assets/img/realisations/image6.jpg" alt="">
-            <img src="./assets/img/realisations/image7.jpg" alt="">
-            <img src="./assets/img/realisations/image8.jpg" alt="">
-            <img src="./assets/img/realisations/image9.jpg" alt="">
-            <img src="./assets/img/realisations/image10.jpg" alt="">
-            <img src="./assets/img/realisations/image11.jpg" alt="">
+    <section id="realisations">
+        <div class="element">
+            <div class="miniaturesTitle">Nos réalisations :</div>
+            <div class="miniatures">
+                <img src="./assets/img/realisations/image1.jpg" alt="">
+                <img src="./assets/img/realisations/image2.jpg" alt="">
+                <img src="./assets/img/realisations/image3.jpg" alt="">
+                <img src="./assets/img/realisations/image4.jpg" alt="">
+                <img src="./assets/img/realisations/image5.jpg" alt="">
+                <img src="./assets/img/realisations/image6.jpg" alt="">
+                <img src="./assets/img/realisations/image7.jpg" alt="">
+                <img src="./assets/img/realisations/image8.jpg" alt="">
+                <img src="./assets/img/realisations/image9.jpg" alt="">
+                <img src="./assets/img/realisations/image10.jpg" alt="">
+                <img src="./assets/img/realisations/image11.jpg" alt="">
+            </div>
         </div>
-    </div>
+    </section>
 
     <section id="entretien" class="anchor-section">
         <div class="element roundedbox colorgray">
@@ -359,25 +397,26 @@
                     </div>
                     <div>
                         <form id="contactForm">
-                            <label for="contactFormName">Nom :</label>
+                            <label for="Name">Nom :</label>
                             <div>
-                                <input type="text" id="contactFormName" required>
+                                <input type="text" id="contactFormName" name="name" required>
                             </div>
-                            <label for="contactFormEmail">Email :</label>
+                            <label for="Email">Email :</label>
                             <div>
-                                <input type="email" id="contactFormEmail" required>
+                                <input type="email" id="contactFormEmail" name="email" required>
                             </div>
-                            <label for="contactFormPhone">Téléphone :</label>
+                            <label for="Phone">Téléphone :</label>
                             <div>
-                                <input type="number" id="contactFormPhone" required>
+                                <input type="number" id="contactFormPhone" name="phone" required>
                             </div>
-                            <label for="contactFormMessage">Votre message :</label>
+                            <label for="message">Votre message :</label>
                             <div>
-                                <textarea name="message" id="contactFormMessage" cols="30" rows="10"></textarea>
+                                <textarea name="message" id="contactFormMessage" name="message" cols="30"
+                                    rows="10"></textarea>
                             </div>
                             <div class="checkframe">
-                                <input type="checkbox" id="contactFormTerms">
-                                <label for="contactFormTerms">
+                                <input type="checkbox" id="contactFormTerms" name="puballowed">
+                                <label for="puballowed">
                                     Nous autorisez-vous à vous contacter par email pour vous proposer
                                     des offres ou demander votre avis.
                                 </label>

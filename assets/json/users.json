@@ -1,0 +1,40 @@
+{
+    "users": [
+        {
+            "name": "Paul M.",
+            "email": "paul@local",
+            "login": "paul",
+            "password": "123456"
+        },
+        {
+            "name": "Claire T.",
+            "email": "claire@local",
+            "login": "claire",
+            "password": "123456"
+        },
+        {
+            "name": "Lucas B.",
+            "email": "lucas@local",
+            "login": "lucas",
+            "password": "123456"
+        },
+        {
+            "name": "Marie L.",
+            "email": "marie@local",
+            "login": "marie",
+            "password": "123456"
+        },
+        {
+            "name": "Sophie R.",
+            "email": "sophie@local",
+            "login": "sophie",
+            "password": "123456"
+        },
+        {
+            "name": "Jean-Marc D.",
+            "email": "jean-marc@local",
+            "login": "jean-marc",
+            "password": "123456"
+        }
+    ]
+}

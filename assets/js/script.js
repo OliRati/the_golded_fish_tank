@@ -38,7 +38,6 @@ menuLink.forEach((link) => {
 const animatedElement = document.querySelectorAll('.animated-card');
 
 const observer = new IntersectionObserver((entries) => {
-    console.dir(entries);
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
@@ -58,25 +57,37 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
     event.preventDefault();
     let errors = [];
 
-    let username = document.getElementById('contactFormName').value;
-    let usermail = document.getElementById('contactFormEmail').value;
-    let userphone = document.getElementById('contactFormPhone').value;
-    let usermessage = document.getElementById('contactFormMessage').value;
-    let useterms = document.getElementById('contactFormTerms').checked;
+    // Get text form data
 
-    if (username === '') {
+    const formData = new FormData(event.target);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    // Get checkbox data
+    if (document.getElementById('contactFormTerms').checked) {
+        data['puballowed'] = 'true';
+    }
+    else {
+        data['puballowed'] = 'false';
+    }
+
+    // Check form data
+
+    if (data['name'] === '') {
         errors.push('Vous devez saisir un Nom valide.');
     }
 
-    if (usermail === '') {
+    if (data['email'] === '') {
         errors.push('Vous devez saisir un email valide.');
     }
 
-    if (userphone === '') {
+    if (data['Phone'] === '') {
         errors.push('Vous devez saisir un numéro de téléphone valide.');
     }
 
-    if (usermessage === '') {
+    if (data['message'] === '') {
         errors.push('Vous devez saisir un message.');
     }
 
@@ -86,13 +97,7 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
         // Send form to server
         fetch('./php/contact.php', {
             method: 'POST',
-            body: JSON.stringify({
-                username: username,
-                usermail: usermail,
-                userphone: userphone,
-                usermessage: usermessage,
-                useterms: useterms
-            }),
+            body: JSON.stringify(data),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
@@ -216,7 +221,26 @@ function moveOutLoginFrame() {
     }, 500);
 }
 
-function requestLogin() {
+async function doUserLoggin(username, password) {
+    const response = await fetch('./php/login.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username: username, password: password })
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    const logged = data.loggedIn;
+
+    return logged;
+}
+
+function requestLogin(caller) {
     const loginForm = document.getElementById("loginForm");
     const loginError = document.getElementById("loginError");
     loginError.innerHTML = "";
@@ -230,25 +254,127 @@ function requestLogin() {
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        if (!loggedIn) {
-            loginError.innerHTML = errorMessage('Nom d\'utilisateur et / ou mot de passe incorrecte !');
+        // Get form data
+
+        const formData = new FormData(event.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        // Check form data
+
+        if (data['username'].length < 2) {
+            loginError.innerHTML = errorMessage('Saisie incorrecte, entrez un nom d\'utilisateur valide !');
+            return;
         }
-        else {
-            moveOutLoginFrame();
+
+        if (data['password'].length < 8) {
+            loginError.innerHTML = errorMessage('Saisie incorrecte, entrez un mot de passe valide !');
+            return;
         }
+
+        doUserLoggin(data['username'], data['password'])
+            .then(logged => {
+
+                if (!logged) {
+                    loginError.innerHTML = errorMessage('Nom d\'utilisateur et / ou mot de passe incorrecte !');
+                    return;
+                }
+                else {
+                    loggedIn = true;
+                    moveOutLoginFrame();
+                    if (caller === 'forum')
+                        requestForum();
+                    else if (caller === 'review')
+                        requestReview();
+                }
+            })
+            .catch(error => {
+                loginError.innerHTML = errorMessage('Erreur du serveur. Impossible de traiter votre demande.');
+                console.error('Error:', error);
+            });
+    });
+}
+
+/* Manage new forum and review requests */
+
+const newForumFrame = document.getElementById("newForumFrame");
+
+function moveInForumFrame() {
+    newForumFrame.style.display = "block";
+    newForumFrame.style.animation = "moveIn 0.5s forwards";
+}
+
+function moveOutForumFrame() {
+    newForumFrame.style.animation = "moveOut 0.5s forwards";
+
+    setTimeout(() => {
+        newForumFrame.style.display = "none";
+        newForumFrame.style.animation = "";
+    }, 500);
+}
+
+const newReviewFrame = document.getElementById("newReviewFrame");
+
+function moveInReviewFrame() {
+    newReviewFrame.style.display = "block";
+    newReviewFrame.style.animation = "moveIn 0.5s forwards";
+}
+
+function moveOutReviewFrame() {
+    newReviewFrame.style.animation = "moveOut 0.5s forwards";
+
+    setTimeout(() => {
+        newReviewFrame.style.display = "none";
+        newReviewFrame.style.animation = "";
+    }, 500);
+}
+
+function requestForum() {
+    moveInForumFrame();
+
+    const newForumForm = document.getElementById("newForumForm");
+
+    newForumForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        moveOutForumFrame();
+    });
+
+    newForumForm.addEventListener('reset', () => {
+        moveOutForumFrame();
+    });
+}
+
+function requestReview() {
+    moveInReviewFrame();
+
+    const newReviewForm = document.getElementById("newReviewForm");
+
+    newReviewForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        moveOutReviewFrame();
+    });
+
+    newReviewForm.addEventListener('reset', () => {
+        moveOutReviewFrame();
     });
 }
 
 const addForum = document.getElementById('addForum');
 addForum.addEventListener('click', () => {
-    if (!loggedIn)
-        requestLogin();
+    if (loggedIn)
+        requestForum();
+    else
+        requestLogin('forum');
 });
 
 const addReview = document.getElementById("addReview");
 addReview.addEventListener('click', () => {
-    if (!loggedIn)
-        requestLogin();
+    if (loggedIn)
+        requestReview();
+    else
+        requestLogin('review');
 });
 
 /* Create new user functions */

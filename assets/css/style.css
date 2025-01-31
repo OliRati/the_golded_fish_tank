@@ -46,7 +46,9 @@ body {
 }
 
 #newUserFrame,
-#loginFrame {
+#loginFrame,
+#newForumFrame,
+#newReviewFrame {
     display: none;
     position: fixed;
     top: 50%;
@@ -478,6 +480,17 @@ p::first-letter {
     margin: 0 auto;
 }
 
+/* Realisations section */
+
+#realisations {
+    margin: 1em 0;
+}
+
+.miniaturesTitle {
+    font-family: 'Aileron';
+    font-size: 1.4em;
+}
+
 .miniatures {
     display: flex;
     flex-wrap: wrap;
@@ -495,6 +508,8 @@ p::first-letter {
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
+
+/* End of Realisations section */
 
 .logofacebook,
 .logoyoutube {
@@ -606,11 +621,6 @@ form .checkframe label {
     font-size: 1em;
 }
 
-.realisations {
-    font-family: 'Aileron';
-    font-size: 1.4em;
-}
-
 /* For large phones */
 @media screen and (min-width:560px) {
     .holder {
@@ -618,7 +628,9 @@ form .checkframe label {
     }
 
     #newUserFrame,
-    #loginFrame {
+    #loginFrame,
+    #newForumFrame,
+    #newReviewFrame {
         width: 500px;
     }
 }

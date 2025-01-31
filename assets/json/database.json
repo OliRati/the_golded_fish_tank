@@ -80,43 +80,4 @@
             "message": "The Golded Fish Tank a transformé mon aquarium d'eau douce en un véritable écosystème. Leur équipe est passionnée et compétente, et ils ont su créer un environnement idéal pour mes poissons. Je suis très heureux du résultat.",
             "response": "Merci, Claire ! Nous sommes ravis que vous soyez satisfaite de votre nouvel écosystème. Votre satisfaction est notre plus grande récompense."
         }
-    ],
-    "users": [
-        {
-            "name": "Paul M.",
-            "email": "paul@local",
-            "login": "paul",
-            "password": "123456"
-        },
-        {
-            "name": "Claire T.",
-            "email": "claire@local",
-            "login": "claire",
-            "password": "123456"
-        },
-        {
-            "name": "Lucas B.",
-            "email": "lucas@local",
-            "login": "lucas",
-            "password": "123456"
-        },
-        {
-            "name": "Marie L.",
-            "email": "marie@local",
-            "login": "marie",
-            "password": "123456"
-        },
-        {
-            "name": "Sophie R.",
-            "email": "sophie@local",
-            "login": "sophie",
-            "password": "123456"
-        },
-        {
-            "name": "Jean-Marc D.",
-            "email": "jean-marc@local",
-            "login": "jean-marc",
-            "password": "123456"
-        }
-    ]
-}
+    ]}
