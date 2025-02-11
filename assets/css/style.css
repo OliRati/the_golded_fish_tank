@@ -644,7 +644,11 @@ form .checkframe label {
     }
 
     .title {
-        font-size: 1.4em;
+        font-size: 1em;
+    }
+
+    .menu a {
+        font-size: 0.8em;
     }
 
     .element {
