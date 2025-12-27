@@ -83,7 +83,7 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
         errors.push('Vous devez saisir un email valide.');
     }
 
-    if (data['Phone'] === '') {
+    if (data['phone'] === '') {
         errors.push('Vous devez saisir un numéro de téléphone valide.');
     }
 
@@ -102,11 +102,14 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'success') {
                 // Reset form
                 document.getElementById('contactFormName').value = '';
                 document.getElementById('contactFormEmail').value = '';
@@ -115,8 +118,10 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
                 document.getElementById('contactFormTerms').checked = false;
 
                 document.getElementById('errorForm').innerHTML = '<p>Votre message a bien été envoyé</p>';
-                return response.text();
-            })
+            } else {
+                throw new Error(data.error || 'Unknown error');
+            }
+        })
             .catch(error => {
                 document.getElementById('errorForm').innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
                 console.error('There has been a problem with your fetch operation:', error);

@@ -17,10 +17,11 @@ $jsonData = array(
     'loggedIn' => false
 );
 
-$username = $data['username'];
-$password = $data['password'];
+$username = trim(filter_var($data['username'] ?? '', FILTER_SANITIZE_STRING));
+$password = $data['password'] ?? '';
 
 if (empty($username) || empty($password)) {
+    $jsonData['message'] = 'Username and password are required.';
     header('Content-Type: application/json');
     echo json_encode($jsonData);
     return;

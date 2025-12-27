@@ -513,9 +513,15 @@ p::first-letter {
 
 .logofacebook,
 .logoyoutube {
-    height: 30px;
+    height: 1.5rem;
     width: auto;
-    margin: 0 0.3em;
+    margin: 0.3em;
+}
+
+.logofacebook:hover,
+.logoyoutube:hover {
+    transform: scale(1.2);
+    transition: all 0.3s;
 }
 
 .article {
@@ -637,10 +643,9 @@ form .checkframe label {
 
 /* For tablets */
 @media screen and (min-width:768px) {
-
     .logofacebook,
     .logoyoutube {
-        height: 40px;
+        height: 1.8rem;
     }
 
     .title {
