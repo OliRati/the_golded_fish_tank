@@ -197,7 +197,9 @@ async function getJsonData() {
         if (!responseForum.ok) {
             throw new Error('HTTP error status : ' + responseForum.status);
         }
-        forumBase = await responseForum.json();
+        const base = await responseForum.json();
+
+        forumBase = base;
     } catch (error) {
         console.error("Failed to fetch forum content : ", error)
     }
@@ -208,7 +210,9 @@ async function getJsonData() {
         if (!responseReview.ok) {
             throw new Error('HTTP error status : ' + responseReview.status);
         }
-        reviewBase = await responseReview.json();
+        const base = await responseReview.json();
+
+        reviewBase = base;
     } catch (error) {
         console.error("Failed to fetch review content : ", error)
     }
