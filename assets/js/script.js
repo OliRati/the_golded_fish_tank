@@ -226,7 +226,7 @@ function moveOutLoginFrame() {
     }, 500);
 }
 
-async function doUserLoggin(username, password) {
+async function doUserLogin(username, password) {
     const response = await fetch('./php/login.php', {
         method: 'POST',
         headers: {
@@ -279,7 +279,7 @@ function requestLogin(caller) {
             return;
         }
 
-        doUserLoggin(data['username'], data['password'])
+        doUserLogin(data['username'], data['password'])
             .then(logged => {
 
                 if (!logged) {

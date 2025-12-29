@@ -7,17 +7,20 @@ $json = file_get_contents('php://input');
 // Decode the JSON data into a PHP array
 $data = json_decode($json, true);
 
-// Check if decoding the JSON data failed
-if (json_last_error() !== JSON_ERROR_NONE) {
-    error_log('Failed to decode JSON data: ' . json_last_error_msg());
-    return;
-}
-
+// Init the JSON response
 $jsonData = array(
     'loggedIn' => false
 );
 
-$username = trim(filter_var($data['username'] ?? '', FILTER_SANITIZE_STRING));
+// Check if decoding the JSON data failed
+if (json_last_error() !== JSON_ERROR_NONE) {
+    $jsonData['message'] = "No data sent.";
+    error_log('Failed to decode JSON data: ' . json_last_error_msg());
+    echo json_encode($jsonData);
+    return;
+}
+
+$username = trim(strip_tags($data['username'] ?? ''));
 $password = $data['password'] ?? '';
 
 if (empty($username) || empty($password)) {
@@ -27,7 +30,10 @@ if (empty($username) || empty($password)) {
     return;
 }
 
-if ($username === 'admin' && $password === 'password') {
+$pdo = getDBConnection();
+if (checkPassword($pdo, $username, $password)) {
+    $jsonData['loggedIn'] = true;
+} elseif ($username === 'admin' && $password === 'password') {
     $jsonData['loggedIn'] = true;
 }
 
