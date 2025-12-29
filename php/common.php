@@ -48,3 +48,45 @@ function checkPassword($pdo, $name, $password)
 
     return false;
 }
+
+function getForumMessages($pdo)
+{
+    $sql = "SELECT m.message_date as date, u.name, m.question, m.response FROM `message` m
+            JOIN `user` u
+            ON m.id_user = u.id_user
+            WHERE m.validation = 'yes' AND m.type = 'forum'
+            ORDER BY m.message_date DESC;";
+    $stmt = $pdo->prepare($sql);
+    $state = $stmt->execute();
+
+    if ($state) {
+        $forums = $stmt->fetchAll();
+
+        if (!empty($forums)) {
+            return $forums;
+        }
+    }
+
+    return [];
+}
+
+function getReviewMessages($pdo)
+{
+    $sql = "SELECT m.message_date as date, u.name, m.question, m.response FROM `message` m
+            JOIN `user` u
+            ON m.id_user = u.id_user
+            WHERE m.validation = 'yes' AND m.type = 'review'
+            ORDER BY m.message_date DESC;";
+    $stmt = $pdo->prepare($sql);
+    $state = $stmt->execute();
+
+    if ($state) {
+        $reviews = $stmt->fetchAll();
+
+        if (!empty($reviews)) {
+            return $reviews;
+        }
+    }
+
+    return [];
+}
