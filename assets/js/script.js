@@ -131,8 +131,8 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
 
 /* Json database functions */
 
-let forumBase = {};
-let reviewBase = {};
+let forumBase = [];
+let reviewBase = [];
 
 let reviewsStartIndex = 0;
 let forumStartIndex = 0;
@@ -190,7 +190,6 @@ moreForum.addEventListener('click', () => {
 });
 
 async function getJsonData() {
-
     try {
         const responseForum = await fetch('./php/getforums.php')
 
