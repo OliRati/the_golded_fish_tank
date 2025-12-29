@@ -39,4 +39,3 @@ if (checkPassword($pdo, $username, $password)) {
 
 header('Content-Type: application/json');
 echo json_encode($jsonData);
-?>

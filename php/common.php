@@ -51,7 +51,7 @@ function checkPassword($pdo, $name, $password)
 
 function getForumMessages($pdo)
 {
-    $sql = "SELECT m.message_date as date, u.name, m.question, m.response FROM `message` m
+    $sql = "SELECT m.message_date as date, u.name, m.question as message, m.response FROM `message` m
             JOIN `user` u
             ON m.id_user = u.id_user
             WHERE m.validation = 'yes' AND m.type = 'forum'
@@ -72,7 +72,7 @@ function getForumMessages($pdo)
 
 function getReviewMessages($pdo)
 {
-    $sql = "SELECT m.message_date as date, u.name, m.question, m.response FROM `message` m
+    $sql = "SELECT m.message_date as date, u.name, m.question as message, m.response FROM `message` m
             JOIN `user` u
             ON m.id_user = u.id_user
             WHERE m.validation = 'yes' AND m.type = 'review'

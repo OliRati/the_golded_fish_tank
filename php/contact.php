@@ -52,4 +52,3 @@ error_log("Received and saved contact from " . $data['name']);
 
 // Send success response
 echo json_encode(['status' => 'success']);
-?>

@@ -102,26 +102,26 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.status === 'success') {
-                // Reset form
-                document.getElementById('contactFormName').value = '';
-                document.getElementById('contactFormEmail').value = '';
-                document.getElementById('contactFormPhone').value = '';
-                document.getElementById('contactFormMessage').value = '';
-                document.getElementById('contactFormTerms').checked = false;
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    // Reset form
+                    document.getElementById('contactFormName').value = '';
+                    document.getElementById('contactFormEmail').value = '';
+                    document.getElementById('contactFormPhone').value = '';
+                    document.getElementById('contactFormMessage').value = '';
+                    document.getElementById('contactFormTerms').checked = false;
 
-                document.getElementById('errorForm').innerHTML = '<p>Votre message a bien été envoyé</p>';
-            } else {
-                throw new Error(data.error || 'Unknown error');
-            }
-        })
+                    document.getElementById('errorForm').innerHTML = '<p>Votre message a bien été envoyé</p>';
+                } else {
+                    throw new Error(data.error || 'Unknown error');
+                }
+            })
             .catch(error => {
                 document.getElementById('errorForm').innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
                 console.error('There has been a problem with your fetch operation:', error);
@@ -131,13 +131,14 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
 
 /* Json database functions */
 
-let database = {};
+let forumBase = {};
+let reviewBase = {};
 
 let reviewsStartIndex = 0;
 let forumStartIndex = 0;
 
 function displayReviewData() {
-    let reviews = database.reviews;
+    let reviews = reviewBase;
     let reviewsList = document.getElementById('reviewItemList');
     let added = 0;
 
@@ -163,7 +164,7 @@ moreReviews.addEventListener('click', () => {
 });
 
 function displayForumData() {
-    let forum = database.forum;
+    let forum = forumBase;
     let forumList = document.getElementById('forumItemList');
     let added = 0;
 
@@ -188,22 +189,48 @@ moreForum.addEventListener('click', () => {
     displayForumData();
 });
 
-function getJsonData() {
-    fetch('./assets/json/database.json')
-        .then(response => {
+async function getJsonData() {
+
+    try {
+        const responseForum = await fetch('./php/getforums.php')
+
+        if (!responseForum.ok) {
+            throw new Error('HTTP error status : ' + responseForum.status);
+        }
+        forumBase = await responseForum.json();
+    } catch (error) {
+        console.error("Failed to fetch forum content : ", error)
+    }
+
+    try {
+        const responseReview = await fetch('./php/getreviews.php')
+
+        if (!responseReview.ok) {
+            throw new Error('HTTP error status : ' + responseReview.status);
+        }
+        reviewBase = await responseReview.json();
+    } catch (error) {
+        console.error("Failed to fetch review content : ", error)
+    }
+
+    if ((reviewBase.length === 0) || (forumBase.length === 0)) {
+        try {
+            const response = await fetch('./assets/json/database.json')
+
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('HTTP error status : ' + response.status);
             }
-            return response.json();
-        })
-        .then(data => {
-            database = data;
-            displayReviewData();
-            displayForumData();
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+            const data = await response.json();
+
+            forumBase = data.forum;
+            reviewBase = data.reviews;
+        } catch (error) {
+            console.error('Failed to fetch fallback forum and review content : ', error);
+        }
+    }
+
+    displayReviewData();
+    displayForumData();
 }
 
 getJsonData();
