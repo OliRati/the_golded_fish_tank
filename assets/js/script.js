@@ -8,6 +8,10 @@ function errorMessage(message) {
     return '<p class="errormessage">' + message + '</p>';
 }
 
+function successMessage(message) {
+    return '<p class="successmessage">' + message + '</p>';
+}
+
 /* Hamburger menu */
 
 const hamburgericon = document.getElementById("hamburgericon");
@@ -110,14 +114,18 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
             })
             .then(data => {
                 if (data.status === 'success') {
-                    // Reset form
-                    document.getElementById('contactFormName').value = '';
-                    document.getElementById('contactFormEmail').value = '';
-                    document.getElementById('contactFormPhone').value = '';
-                    document.getElementById('contactFormMessage').value = '';
-                    document.getElementById('contactFormTerms').checked = false;
+                    document.getElementById('errorForm').innerHTML = successMessage('Votre message a bien été envoyé.');
 
-                    document.getElementById('errorForm').innerHTML = '<p>Votre message a bien été envoyé</p>';
+                    setTimeout(() => {
+                        // Reset form
+                        document.getElementById('contactFormName').value = '';
+                        document.getElementById('contactFormEmail').value = '';
+                        document.getElementById('contactFormPhone').value = '';
+                        document.getElementById('contactFormMessage').value = '';
+                        document.getElementById('contactFormTerms').checked = false;
+                        document.getElementById('errorForm').innerHTML = "";
+                    }, 3000);
+                    
                 } else {
                     throw new Error(data.error || 'Unknown error');
                 }
@@ -370,10 +378,63 @@ function requestForum() {
     moveInForumFrame();
 
     const newForumForm = document.getElementById("newForumForm");
+    const forumError = document.getElementById("forumError");
 
     newForumForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        moveOutForumFrame();
+
+        // Get form data
+
+        const formData = new FormData(event.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        // Check form data
+
+        if (data['message'].length < 50) {
+            forumError.innerHTML = errorMessage('Complétez votre message ( minimun 50 caractères ) !');
+            return;
+        }
+
+        if (data['message'].length > 512) {
+            forumError.innerHTML = errorMessage('Raccourcissez votre message ( maximum 512 caractères ) !');
+            return;
+        }
+
+        // Send form to server
+        fetch('./php/sendforum.php', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    // Reset form
+                    forumError.innerHTML = successMessage('Votre message a bien été envoyé.');
+                    setTimeout(() => {
+                        moveOutForumFrame();
+                        forumError.innerHTML = '';
+                        document.getElementById('forumMessage').value = '';
+                    }, 3000);
+                } else {
+                    throw new Error(data.message || 'Unknown error');
+                }
+            })
+            .catch(error => {
+                forumError.innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+
     });
 
     newForumForm.addEventListener('reset', () => {
