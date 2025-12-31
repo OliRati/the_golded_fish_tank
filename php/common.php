@@ -70,6 +70,25 @@ function getForumMessages($pdo)
     return [];
 }
 
+function addForumMessage($pdo, $user, $message)
+{
+    $sql = "INSERT INTO `message` ( `id_user`, `message`, `message_date`, `type`, `validation` ) VALUES
+            ( :id_user, :message, :message_date, :type, :validation );";
+    $stmt = $pdo->prepare($sql);
+    $state = $stmt->execute([
+        ':id_user' => $user,
+        ':message' => $message,
+        ':message_date' => new DateTime(),
+        ':type' => 'forum',
+        ':validation' => 'no'
+    ]);
+
+    if ($state)
+        return true;
+
+    return false;
+}
+
 function getReviewMessages($pdo)
 {
     $sql = "SELECT m.message_date as date, u.name, m.question as message, m.response FROM `message` m

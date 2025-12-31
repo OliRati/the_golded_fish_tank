@@ -24,7 +24,7 @@ const DB_HOSTNAME = 'localhost';
 const DB_NAME = 'thegoldedfishtank';
 
 // Database user
-const DB_USER = '';
+const DB_USER = 'root';
 
 // Database password
 const DB_PASSWORD = '';
