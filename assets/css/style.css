@@ -651,7 +651,7 @@ form .checkframe label {
 }
 
 /* For large phones */
-@media screen and (min-width:560px) {
+@media screen and (min-width:576px) {
     .holder {
         width: 100%;
     }
