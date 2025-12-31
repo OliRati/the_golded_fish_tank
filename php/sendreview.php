@@ -30,10 +30,10 @@ $message = trim(strip_tags($data['message']));
 if (isset($_SESSION['user_id'])) {
     $id_user = $_SESSION['user_id'];
     $pdo = getDBConnection();
-    $result = addForumMessage($pdo, $id_user, $message);
+    $result = addReviewMessage($pdo, $id_user, $message);
 } else {
     $result = false;
-    error_log("Trying to send forum message without user_id defined !!!");
+    error_log("Trying to send review message without user_id defined !!!");
 }
 
 // Add status to the JSON response

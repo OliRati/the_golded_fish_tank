@@ -120,3 +120,24 @@ function getReviewMessages($pdo)
 
     return [];
 }
+
+function addReviewMessage($pdo, $id_user, $message)
+{
+    date_default_timezone_set('GMT');
+
+    $sql = "INSERT INTO `message` ( `type`, `id_user`, `message_date`, `question`, `validation` ) VALUES
+            ( :type, :id_user, :message_date, :question, :validation );";
+    $stmt = $pdo->prepare($sql);
+    $state = $stmt->execute([
+        ':type' => 'review',
+        ':id_user' => $id_user,
+        ':message_date' => date("Y-m-d h:m:s"),
+        ':question' => $message,
+        ':validation' => 'no'
+    ]);
+
+    if ($state)
+        return true;
+
+    return false;
+}
