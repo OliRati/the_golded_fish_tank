@@ -7,6 +7,7 @@ SET
 
 USE `thegoldedfishtank`;
 
+DROP TABLE IF EXISTS `message`;
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE
@@ -18,8 +19,6 @@ CREATE TABLE
         `creation_date` DATETIME NOT NULL,
         PRIMARY KEY (`id_user`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
-DROP TABLE IF EXISTS `message`;
 
 CREATE TABLE
     `message` (
@@ -137,6 +136,13 @@ VALUES
         'georges@fake.foo',
         'nopassword',
         '2025-01-27 12:00:00'
+    ),
+    (
+        14,
+        'admin',
+        'admin@fake.foo',
+        'password',
+        '2025-01-01 12:00:00'
     );
 
 INSERT INTO

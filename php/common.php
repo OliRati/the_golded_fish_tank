@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// --- CSRF token: generate if missing ---
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 if (file_exists('../.env.php')) {
     // Get local configuration file
     require '../.env.php';
@@ -31,7 +38,7 @@ function getDBConnection()
 
 function checkPassword($pdo, $name, $password)
 {
-    $sql = "SELECT `password` FROM `user` WHERE `name` = :name;";
+    $sql = "SELECT `password`, `id_user` FROM `user` WHERE `name` = :name;";
     $stmt = $pdo->prepare($sql);
     $state = $stmt->execute([
         ':name' => $name
@@ -41,8 +48,10 @@ function checkPassword($pdo, $name, $password)
         $storedPassword = $stmt->fetch();
 
         if (!empty($storedPassword)) {
-            if ($password === $storedPassword['password'])
+            if ($password === $storedPassword['password']) {
+                $_SESSION['user_id'] = $storedPassword['id_user'];
                 return true;
+            }
         }
     }
 
@@ -70,16 +79,18 @@ function getForumMessages($pdo)
     return [];
 }
 
-function addForumMessage($pdo, $user, $message)
+function addForumMessage($pdo, $id_user, $message)
 {
-    $sql = "INSERT INTO `message` ( `id_user`, `message`, `message_date`, `type`, `validation` ) VALUES
-            ( :id_user, :message, :message_date, :type, :validation );";
+    date_default_timezone_set('GMT');
+
+    $sql = "INSERT INTO `message` ( `type`, `id_user`, `message_date`, `question`, `validation` ) VALUES
+            ( :type, :id_user, :message_date, :question, :validation );";
     $stmt = $pdo->prepare($sql);
     $state = $stmt->execute([
-        ':id_user' => $user,
-        ':message' => $message,
-        ':message_date' => new DateTime(),
         ':type' => 'forum',
+        ':id_user' => $id_user,
+        ':message_date' => date("Y-m-d h:m:s"),
+        ':question' => $message,
         ':validation' => 'no'
     ]);
 

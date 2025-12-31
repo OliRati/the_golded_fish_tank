@@ -33,8 +33,6 @@ if (empty($username) || empty($password)) {
 $pdo = getDBConnection();
 if (checkPassword($pdo, $username, $password)) {
     $jsonData['loggedIn'] = true;
-} elseif ($username === 'admin' && $password === 'password') {
-    $jsonData['loggedIn'] = true;
 }
 
 header('Content-Type: application/json');
