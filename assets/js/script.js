@@ -105,35 +105,32 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.status === 'success') {
-                    document.getElementById('errorForm').innerHTML = successMessage('Votre message a bien été envoyé.');
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(data => {
+            if (data.status === 'success') {
+                document.getElementById('errorForm').innerHTML = successMessage('Votre message a bien été envoyé.');
 
-                    setTimeout(() => {
-                        // Reset form
-                        document.getElementById('contactFormName').value = '';
-                        document.getElementById('contactFormEmail').value = '';
-                        document.getElementById('contactFormPhone').value = '';
-                        document.getElementById('contactFormMessage').value = '';
-                        document.getElementById('contactFormTerms').checked = false;
-                        document.getElementById('errorForm').innerHTML = "";
-                    }, 3000);
-                    
-                } else {
-                    throw new Error(data.error || 'Unknown error');
-                }
-            })
-            .catch(error => {
-                document.getElementById('errorForm').innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
-                console.error('There has been a problem with your fetch operation:', error);
-            });
+                setTimeout(() => {
+                    // Reset form
+                    document.getElementById('contactFormName').value = '';
+                    document.getElementById('contactFormEmail').value = '';
+                    document.getElementById('contactFormPhone').value = '';
+                    document.getElementById('contactFormMessage').value = '';
+                    document.getElementById('contactFormTerms').checked = false;
+                    document.getElementById('errorForm').innerHTML = "";
+                }, 3000);
+
+            } else {
+                throw new Error(data.error || 'Unknown error');
+            }
+        }).catch(error => {
+            document.getElementById('errorForm').innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
+            console.error('There has been a problem with your fetch operation:', error);
+        });
     }
 });
 
@@ -317,26 +314,24 @@ function requestLogin(caller) {
             return;
         }
 
-        doUserLogin(data['username'], data['password'])
-            .then(logged => {
+        doUserLogin(data['username'], data['password']).then(logged => {
 
-                if (!logged) {
-                    loginError.innerHTML = errorMessage('Nom d\'utilisateur et / ou mot de passe incorrecte !');
-                    return;
-                }
-                else {
-                    loggedIn = true;
-                    moveOutLoginFrame();
-                    if (caller === 'forum')
-                        requestForum();
-                    else if (caller === 'review')
-                        requestReview();
-                }
-            })
-            .catch(error => {
-                loginError.innerHTML = errorMessage('Erreur du serveur. Impossible de traiter votre demande.');
-                console.error('Error:', error);
-            });
+            if (!logged) {
+                loginError.innerHTML = errorMessage('Nom d\'utilisateur et / ou mot de passe incorrecte !');
+                return;
+            }
+            else {
+                loggedIn = true;
+                moveOutLoginFrame();
+                if (caller === 'forum')
+                    requestForum();
+                else if (caller === 'review')
+                    requestReview();
+            }
+        }).catch(error => {
+            loginError.innerHTML = errorMessage('Erreur du serveur. Impossible de traiter votre demande.');
+            console.error('Error:', error);
+        });
     });
 }
 
@@ -410,31 +405,27 @@ function requestForum() {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.status === 'success') {
-                    // Reset form
-                    forumError.innerHTML = successMessage('Votre message a bien été envoyé.');
-                    setTimeout(() => {
-                        moveOutForumFrame();
-                        forumError.innerHTML = '';
-                        document.getElementById('forumMessage').value = '';
-                    }, 3000);
-                } else {
-                    throw new Error(data.message || 'Unknown error');
-                }
-            })
-            .catch(error => {
-                forumError.innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(data => {
+            if (data.status === 'success') {
+                // Reset form
+                forumError.innerHTML = successMessage('Votre message a bien été envoyé.');
+                setTimeout(() => {
+                    moveOutForumFrame();
+                    forumError.innerHTML = '';
+                    document.getElementById('forumMessage').value = '';
+                }, 3000);
+            } else {
+                throw new Error(data.message || 'Unknown error');
+            }
+        }).catch(error => {
+            forumError.innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
+            console.error('There has been a problem with your fetch operation:', error);
+        });
     });
 
     newForumForm.addEventListener('reset', () => {
@@ -446,10 +437,59 @@ function requestReview() {
     moveInReviewFrame();
 
     const newReviewForm = document.getElementById("newReviewForm");
+    const reviewError = document.getElementById("reviewError");
 
     newReviewForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        moveOutReviewFrame();
+
+        // Get form data
+
+        const formData = new FormData(event.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        // Check form data
+
+        if (data['message'].length < 50) {
+            reviewError.innerHTML = errorMessage('Complétez votre message ( minimun 50 caractères ) !');
+            return;
+        }
+
+        if (data['message'].length > 512) {
+            reviewError.innerHTML = errorMessage('Raccourcissez votre message ( maximum 512 caractères ) !');
+            return;
+        }
+
+        // Send form to server
+        fetch('./php/sendreview.php', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(data => {
+            if (data.status === 'success') {
+                // Reset form
+                reviewError.innerHTML = successMessage('Votre message a bien été envoyé.');
+                setTimeout(() => {
+                    moveOutReviewFrame();
+                    reviewError.innerHTML = '';
+                    document.getElementById('reviewMessage').value = '';
+                }, 3000);
+            } else {
+                throw new Error(data.message || 'Unknown error');
+            }
+        }).catch(error => {
+            reviewError.innerHTML = errorMessage('Un problème est survenu, nous n\'avons pas pu envoyer votre message. Veuillez réessayer plus tard.');
+            console.error('There has been a problem with your fetch operation:', error);
+        });
     });
 
     newReviewForm.addEventListener('reset', () => {
@@ -541,21 +581,18 @@ newUserForm.addEventListener('submit', (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    })
-        .then(response => {
-            if (!response.ok)
-                throw new Error('Network response was not ok');
+    }).then(response => {
+        if (!response.ok)
+            throw new Error('Network response was not ok');
 
-            return response.json();
-        })
-        .then(result => {
-            console.log('Success:', result);
-            moveOutNewUserFrame();
-        })
-        .catch(error => {
-            newUserError.innerHTML = errorMessage('Erreur du serveur. Impossible de traiter votre demande.');
-            console.error('Error:', error);
-        });
+        return response.json();
+    }).then(result => {
+        console.log('Success:', result);
+        moveOutNewUserFrame();
+    }).catch(error => {
+        newUserError.innerHTML = errorMessage('Erreur du serveur. Impossible de traiter votre demande.');
+        console.error('Error:', error);
+    });
 
 });
 
