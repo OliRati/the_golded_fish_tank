@@ -45,11 +45,12 @@ function checkPassword($pdo, $name, $password)
     ]);
 
     if ($state) {
-        $storedPassword = $stmt->fetch();
+        $storedPasswordHash = $stmt->fetch();
 
-        if (!empty($storedPassword)) {
-            if ($password === $storedPassword['password']) {
-                $_SESSION['user_id'] = $storedPassword['id_user'];
+        if (!empty($storedPasswordHash)) {
+            $passwordHash = md5($password);
+            if ($passwordHash === $storedPasswordHash['password']) {
+                $_SESSION['user_id'] = $storedPasswordHash['id_user'];
                 return true;
             }
         }

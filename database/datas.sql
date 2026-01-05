@@ -1,42 +1,8 @@
 -- 
--- This is the shema for The Golded Fish Tank database
--- 
-CREATE DATABASE IF NOT EXISTS `thegoldedfishtank` DEFAULT CHARACTER
-SET
-    utf8mb4 COLLATE utf8mb4_general_ci;
-
-USE `thegoldedfishtank`;
-
-DROP TABLE IF EXISTS `message`;
-DROP TABLE IF EXISTS `user`;
-
-CREATE TABLE
-    `user` (
-        `id_user` int NOT NULL AUTO_INCREMENT,
-        `name` varchar(50) NOT NULL,
-        `email` varchar(50) NOT NULL,
-        `password` varchar(50) NOT NULL,
-        `creation_date` DATETIME NOT NULL,
-        PRIMARY KEY (`id_user`)
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
-CREATE TABLE
-    `message` (
-        `id_message` int NOT NULL AUTO_INCREMENT,
-        `type` ENUM ('forum', 'review'),
-        `id_user` int NOT NULL,
-        `message_date` DATETIME NOT NULL,
-        `question` varchar(512) NOT NULL,
-        `response` varchar(1024) NULL,
-        `validation` ENUM ('yes', 'no'),
-        PRIMARY KEY (`id_message`),
-        KEY `id_user` (`id_user`),
-        CONSTRAINT `message_itbf` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
--- 
 -- This is a Sample set of Datas
 -- 
+USE `thegoldedfishtank`;
+
 INSERT INTO
     `user` (
         `id_user`,
@@ -50,98 +16,98 @@ VALUES
         1,
         'Claire B.',
         'claire.b@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-02-14 12:00:00'
     ),
     (
         2,
         'Pierre M.',
         'pierre@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-02-28 12:00:00'
     ),
     (
         3,
         'Mathilde D.',
         'mathilde@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-03-03 12:00:00'
     ),
     (
         4,
         'Jean-Marc D.',
         'jean.marc@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-03-05 12:00:00'
     ),
     (
         5,
         'Sophie R.',
         'sophie@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-03-15 12:00:00'
     ),
     (
         6,
         'Marie L.',
         'marie@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-03-23 12:00:00'
     ),
     (
         7,
         'Paul M.',
         'paul@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-03-27 12:00:00'
     ),
     (
         8,
         'Claire T.',
         'claire.t@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-03-19 12:00:00'
     ),
     (
         9,
         'Lucas B.',
         'lucas@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-03-07 12:00:00'
     ),
     (
         10,
         'Jacques M.',
         'jacques@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-02-26 12:00:00'
     ),
     (
         11,
         'Matthieu L.',
         'matthieu@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-02-19 12:00:00'
     ),
     (
         12,
         'Martine B.',
         'martine@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-01-31 12:00:00'
     ),
     (
         13,
         'Georges M.',
         'georges@fake.foo',
-        'nopassword',
+        MD5 ('nopassword'),
         '2025-01-27 12:00:00'
     ),
     (
         14,
         'admin',
         'admin@fake.foo',
-        'password',
+        MD5 ('password'),
         '2025-01-01 12:00:00'
     );
 
