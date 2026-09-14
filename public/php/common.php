@@ -6,12 +6,12 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-if (file_exists('../.env.php')) {
+if (file_exists('../../.env.php')) {
     // Get local configuration file
-    require '../.env.php';
-} elseif (file_exists('../.env.example.php')) {
+    require '../../.env.php';
+} elseif (file_exists('../../.env.example.php')) {
     // Get sample configuration file
-    require '../.env.example.php';
+    require '../../.env.example.php';
 }
 
 function getDBConnection()

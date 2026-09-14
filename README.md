@@ -20,21 +20,26 @@ The website demonstrates:
 ## 🗂️ Project Structure
 
 ```
-assets/
-  css/         # Stylesheets
-  fonts/       # Custom fonts
-  img/         # Images and logos
-  js/          # JavaScript logic
-  json/        # Example data (users, forum, reviews)
+public
+  assets/
+    css/         # Stylesheets
+    fonts/       # Custom fonts
+    img/         # Images and logos
+    js/          # JavaScript logic
+    json/        # Example data (users, forum, reviews)
+
+  php/           # Backend PHP scripts
+
+  index.html     # Main website page
+  cgu.html       # Terms of use
+  cookies.html   # Cookie policy
+  politique.html # Privacy policy
+
 database/
-  create.sql   # Create database structure
-  datas.sql    # A Sample set of datas for testing
-php/           # Backend PHP scripts
-index.html     # Main website page
-cgu.html       # Terms of use
-cookies.html   # Cookie policy
-politique.html # Privacy policy
-README.md      # This file
+  create.sql     # Create database structure
+  datas.sql      # A Sample set of datas for testing
+
+README.md        # This file
 ```
 
 ## Purpose

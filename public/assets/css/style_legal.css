@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'DynaPuff';
+    src: url("../fonts/DynaPuff-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Aileron';
+    src: url("../fonts/Aileron-Regular.otf");
+}
+
+@font-face {
+    font-family: 'BreeSerif';
+    src: url("../fonts/BreeSerif_Reg.otf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #191919;
+    color: antiquewhite;
+    font-family: 'Aileron';
+    font-size: 16px;
+
+    width: 96%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: 'Aileron';
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 2rem 0;
+}
+
+h2 {
+    font-family: 'Aileron';
+    font-size: 1.75rem;
+    color: white;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 1rem 0;
+}
+
+p {
+    font-family: 'BreeSerif';
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+p::first-letter {
+    font-weight: 800;
+    font-size: larger;
+}
+
+ul {
+    margin-left: 2.5rem;
+}
+
+li {
+    margin: 0.4rem 0;
+}
